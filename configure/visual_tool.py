@@ -1,9 +1,6 @@
 # Author: Harvey Chang
 # Email: chnme40cs@gmail.com
-from configure import *
 import time
-import test_config
-import policy_config
 from functools import partial
 import tkinter as tki
 from tkinter import ttk
@@ -140,14 +137,8 @@ def done(config):
     for key, value in config.data.items():
         print('{}:{}'.format(key, value))
 
-    config.save(get_time())
+    config.save('log/{}'.format(get_time()))
 
 
 if __name__ == '__main__':
-    whole_config = config()
-    env = test_config.mujoco_env_config('environment')
-    policy = policy_config.policy_config('policy')
-
-    whole_config.add(env)
-    whole_config.add(policy)
-    major_pane(whole_config)
+    pass

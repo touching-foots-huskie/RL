@@ -1,7 +1,11 @@
 # Author: Harvey Chang
 # Email: chnme40cs@gmail.com
 # policy configures
-import configure
+import sys
+sys.path.append('/mnt/storage/codes/Harvey')
+
+import RL as rl
+from RL.configure import configure
 from collections import OrderedDict
 
 class policy_config(configure.sub_config):
@@ -22,6 +26,7 @@ class policy_config(configure.sub_config):
         self.data['epsilon'] = 0.2
         self.data['epochs'] = 20
         self.data['batch_num'] = 256
+        self.data['random_level'] = 0.1
 
     def get_knowledge(self):
         # knowledge
@@ -35,6 +40,7 @@ class policy_config(configure.sub_config):
         self.knowledge['epsilon'] = [0.2, 0.1]
         self.knowledge['epochs'] = [20, 10, 5, 40]
         self.knowledge['batch_num'] = [256, 128, 64, 32]
+        self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
 
 
     def refresh(self, name=None):
@@ -172,4 +178,20 @@ class policy_config(configure.sub_config):
 
                 # False?
                 self.data['partial_restart'] = False
+        elif name == 'update_string':
+            self.data['judge_string'] = self.data['update_string']
+            if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
+                self.data['random_level'] = 0.1
+            else:
+                self.data['random_level'] = 0.0
 
+        elif name == 'judge_string':
+            self.data['update_string'] = self.data['judge_string']
+            if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
+                self.data['random_level'] = 0.1
+            else:
+                self.data['random_level'] = 0.0
+
+
+if __name__ == '__main__':
+    policy_config('policy')
