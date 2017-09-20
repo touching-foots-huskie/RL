@@ -14,8 +14,9 @@ class env_config(configure.sub_config):
     def __init__(self, name):
         configure.sub_config.__init__(self, name)
         # core config for mujoco
-        self.get_data()
         self.get_knowledge()
+        self.get_data()
+
 
     def get_data(self):
         self.data = OrderedDict()

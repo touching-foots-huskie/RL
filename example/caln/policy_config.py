@@ -5,6 +5,7 @@ import sys
 sys.path.append('/mnt/storage/codes/Harvey')
 
 import RL as rl
+import numpy as np
 from RL.configure import configure
 from collections import OrderedDict
 
@@ -12,8 +13,9 @@ class policy_config(configure.sub_config):
     def __init__(self, name):
         configure.sub_config.__init__(self, name)
         # core config for mujoco
-        self.get_data()
         self.get_knowledge()
+        self.get_data()
+
 
     def get_data(self):
         self.data = OrderedDict()
@@ -27,8 +29,11 @@ class policy_config(configure.sub_config):
         self.data['training_mark'] = ''
         self.data['epsilon'] = 0.2
         self.data['epochs'] = 20
+        self.data['max_iter_num'] = 10
         self.data['batch_num'] = 256
+        self.data['batch_epochs'] = 40
         self.data['random_level'] = 0.1
+
 
     def get_knowledge(self):
         # knowledge
@@ -41,8 +46,14 @@ class policy_config(configure.sub_config):
         # param choice:
         self.knowledge['epsilon'] = [0.2, 0.1]
         self.knowledge['epochs'] = [20, 10, 5, 40]
+        self.knowledge['max_iter_num'] = [10, 20, 40]
         self.knowledge['batch_num'] = [256, 128, 64, 32]
+        self.knowledge['batch_epochs'] = [40, 80, 120, 20]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
+        # learning rate:
+        self.knowledge['lr_cs'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
+        self.knowledge['lr_ts'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
+        self.knowledge['lr_as'] = {'ball':9e-4/np.sqrt(np.sqrt(400)), 'arm':9e-4/np.sqrt(50), '3darm':9e-4/np.sqrt(50)}
 
 
     def refresh(self, name=None):
@@ -59,7 +70,7 @@ class policy_config(configure.sub_config):
                 self.data['a_param_save'] = 'True'
                 self.data['a_param_restore'] = 'False'
                 self.data['a_trainable'] = 'True'
-
+                self.data['lr_a'] = self.knowledge['lr_as'][self.upper_data['base']]
                 # value
                 self.data['c_param_mark'] = ''
                 self.data['c_activate'] = True
@@ -67,6 +78,7 @@ class policy_config(configure.sub_config):
                 self.data['c_param_save'] = 'True'
                 self.data['c_param_restore'] = 'False'
                 self.data['c_trainable'] = 'True'
+                self.data['lr_c'] = self.knowledge['lr_cs'][self.upper_data['base']]
 
                 # activation
                 self.data['t_param_mark'] = ''
@@ -87,7 +99,7 @@ class policy_config(configure.sub_config):
                 self.data['a_param_save'] = 'False, True'
                 self.data['a_param_restore'] = 'True, False'
                 self.data['a_trainable'] = 'False, True'
-
+                self.data['lr_a'] = self.knowledge['lr_as'][self.upper_data['base']]
                 # value
                 self.data['c_param_mark'] = ''
                 self.data['c_activate'] = True
@@ -95,6 +107,7 @@ class policy_config(configure.sub_config):
                 self.data['c_param_save'] = 'False, True'
                 self.data['c_param_restore'] = 'True, False'
                 self.data['c_trainable'] = 'False, True'
+                self.data['lr_c'] = self.knowledge['lr_cs'][self.upper_data['base']]
 
                 # activation
                 self.data['t_param_mark'] = ''
@@ -131,6 +144,7 @@ class policy_config(configure.sub_config):
                 self.data['t_param_save'] = 'True'
                 self.data['t_param_restore'] = 'False'
                 self.data['t_trainable'] = 'True'
+                self.data['lr_t'] = self.knowledge['lr_ts'][self.upper_data['base']]
 
                 # network
                 self.data['network_mark'] = ''
