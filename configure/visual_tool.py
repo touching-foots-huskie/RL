@@ -137,7 +137,7 @@ def done(config):
     for key, value in config.data.items():
         print('{}:{}'.format(key, value))
 
-    config.save('log/{}'.format(get_time()))
+    config.save('train_log/{}'.format(get_time()))
 
 
 if __name__ == '__main__':

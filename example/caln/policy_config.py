@@ -22,6 +22,8 @@ class policy_config(configure.sub_config):
         self.data['eval_string'] = 'sum'
         self.data['update_string'] = 'curriculum'
         self.data['judge_string'] = 'curriculum'
+        self.data['save_dir'] = 'train_log/model/'
+        self.data['log_dir'] = 'train_log/log/'
         self.data['training_mark'] = ''
         self.data['epsilon'] = 0.2
         self.data['epochs'] = 20
