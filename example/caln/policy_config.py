@@ -18,7 +18,6 @@ class policy_config(configure.sub_config):
         self.get_data()
 
     def get_data(self):
-        self.data = OrderedDict()
         self.data['mode'] = ''
         self.data['system_mark'] = ''
         self.data['eval_string'] = 'sum'
@@ -34,6 +33,9 @@ class policy_config(configure.sub_config):
         self.data['batch_epochs'] = 40
         self.data['total_episodes'] = 10000
         self.data['random_level'] = 0.1
+        self.data['lambda'] = 1.1
+        self.data['gamma'] = 0.98
+        self.data['reward_threshold'] = 0.9
 
     def get_knowledge(self):
         # knowledge
@@ -49,12 +51,15 @@ class policy_config(configure.sub_config):
         self.knowledge['max_iter_num'] = [10, 20, 40]
         self.knowledge['batch_num'] = [256, 128, 64, 32]
         self.knowledge['batch_epochs'] = [40, 80, 120, 20]
-        self.knowledge['total_episodes'] = [10000, 20000, 50000, 100000]
+        self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
         # learning rate:
-        self.knowledge['lr_cs'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
-        self.knowledge['lr_ts'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
-        self.knowledge['lr_as'] = {'ball':9e-4/np.sqrt(np.sqrt(400)), 'arm':9e-4/np.sqrt(50), '3darm':9e-4/np.sqrt(50)}
+        self.knowledge['lr_cs'] = {'ball': 1e-2/np.sqrt(np.sqrt(200)),
+                                   'arm': 1e-2/np.sqrt(np.sqrt(500)), '3darm': 1e-2/np.sqrt(np.sqrt(500))}
+        self.knowledge['lr_ts'] = {'ball': 1e-2/np.sqrt(np.sqrt(200)),
+                                   'arm': 1e-2/np.sqrt(np.sqrt(500)), '3darm': 1e-2/np.sqrt(np.sqrt(500))}
+        self.knowledge['lr_as'] = {'ball': 9e-4/np.sqrt(np.sqrt(400)),
+                                   'arm': 9e-4/np.sqrt(50), '3darm': 9e-4/np.sqrt(50)}
 
     def refresh(self, name=None):
         if name == 'mode':
@@ -225,6 +230,7 @@ class policy_config(configure.sub_config):
     def push(self, updata):
         # rewrite push method for some data. which is needless to show
         self.data['global_step'] = 0
+        self.data['threshold'] = 10.0
         # push
         for name, value in self.data.items():
             updata[name] = value

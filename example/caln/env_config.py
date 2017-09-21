@@ -17,13 +17,10 @@ class env_config(configure.sub_config):
         self.get_knowledge()
         self.get_data()
 
-
     def get_data(self):
-        self.data = OrderedDict()
         self.data['environment'] = ''
         self.data['attribute_num'] = 0
         self.data['base'] = ''
-
 
     def get_knowledge(self):
         # knowledge
@@ -31,9 +28,9 @@ class env_config(configure.sub_config):
         self.knowledge['base'] = ['ball', 'arm', '3darm']
         self.knowledge['attribute_0'] = ['safety', 'door', 'speed', 'force']
         # dim_information
-        self.knowledge['action_dims'] = {'ball':2, 'arm':5, '3darm':5}
-        self.knowledge['dim_lists'] = {'ball': '4,4', 'arm': '10,4', '3darm':'10,6', 'safety':',4',
-                                       'door':',2', 'speed':',2', 'force':',2'}
+        self.knowledge['action_dims'] = {'ball': 2, 'arm':5, '3darm':5}
+        self.knowledge['dim_lists'] = {'ball': '4,4', 'arm': '10,4', '3darm': '10,6', 'safety': ',4',
+                                       'door': ',2', 'speed': ',2', 'force': ',2'}
 
     def refresh(self, name=None):
         # attribute:
@@ -77,6 +74,7 @@ class env_config(configure.sub_config):
             name_list += ',{}'.format(self.data['attribute_{}'.format(i)])
             i += 1
         self.data['environment'] = name_list
+
 
 if __name__ == '__main__':
     env_config('environment')

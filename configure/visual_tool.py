@@ -93,6 +93,7 @@ def establish_attribute_entry(content_pane, id, y_num, key, value, sub_config):
         entry.bind('<Return>', callback_func)
         entry.grid(row=y, column=x+1, sticky='w', padx=2, pady=2)
 
+
 # utils:
 def location_map(id, y_num):
     # for double align: using 2*x_id
