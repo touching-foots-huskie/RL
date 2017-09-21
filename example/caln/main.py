@@ -12,6 +12,8 @@ from RL.env.mujoco.env import env
 from RL.env.mujoco.protocol import container
 # policy
 from RL.nn.ppo import policy_rep
+from RL.train.judge import judge_wrapper
+
 import numpy as np
 
 def main():
@@ -32,11 +34,11 @@ def main():
     mypolicy.sess.run(tf.global_variables_initializer())
     # flag:
     flag = True
+    judge_func = judge_wrapper(whole_config)
     while not flag:
         results = run_policy(whole_config, myenv, mycontainer, mypolicy)
 
-
-
+        flag = judge_func(whole_config)
 
 def run_episode(myconfig, myenv, mycontainer, mypolicy):
     # run episode means run and update for certain times;

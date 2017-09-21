@@ -9,13 +9,13 @@ import numpy as np
 from RL.configure import configure
 from collections import OrderedDict
 
+
 class policy_config(configure.sub_config):
     def __init__(self, name):
         configure.sub_config.__init__(self, name)
         # core config for mujoco
         self.get_knowledge()
         self.get_data()
-
 
     def get_data(self):
         self.data = OrderedDict()
@@ -32,8 +32,8 @@ class policy_config(configure.sub_config):
         self.data['max_iter_num'] = 10
         self.data['batch_num'] = 256
         self.data['batch_epochs'] = 40
+        self.data['total_episodes'] = 10000
         self.data['random_level'] = 0.1
-
 
     def get_knowledge(self):
         # knowledge
@@ -49,12 +49,12 @@ class policy_config(configure.sub_config):
         self.knowledge['max_iter_num'] = [10, 20, 40]
         self.knowledge['batch_num'] = [256, 128, 64, 32]
         self.knowledge['batch_epochs'] = [40, 80, 120, 20]
+        self.knowledge['total_episodes'] = [10000, 20000, 50000, 100000]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
         # learning rate:
         self.knowledge['lr_cs'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
         self.knowledge['lr_ts'] = {'ball':1e-2/np.sqrt(np.sqrt(200)), 'arm':1e-2/np.sqrt(np.sqrt(500)), '3darm':1e-2/np.sqrt(np.sqrt(500))}
         self.knowledge['lr_as'] = {'ball':9e-4/np.sqrt(np.sqrt(400)), 'arm':9e-4/np.sqrt(50), '3darm':9e-4/np.sqrt(50)}
-
 
     def refresh(self, name=None):
         if name == 'mode':
@@ -153,6 +153,11 @@ class policy_config(configure.sub_config):
                 # False?
                 self.data['partial_restart'] = False
 
+                # data:
+                self.data['random_level'] = 10.0
+                self.data['update_string'] = 'stable'
+                self.data['judge_string'] = 'stable'
+
             elif self.data['mode'] == 'test':
                 # attribute train only refers to train two layer caln
                 name_list = ''
@@ -195,6 +200,11 @@ class policy_config(configure.sub_config):
                 # False?
                 self.data['partial_restart'] = False
         elif name == 'update_string':
+            # if mode is weight_train, then the string can not be changed
+            if self.data['mode'] == 'weight_train':
+                print('can not choose update when weight train')
+                raise ValueError
+
             self.data['judge_string'] = self.data['update_string']
             if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
                 self.data['random_level'] = 0.1
@@ -202,11 +212,22 @@ class policy_config(configure.sub_config):
                 self.data['random_level'] = 0.0
 
         elif name == 'judge_string':
+            if self.data['mode'] == 'weight_train':
+                print('can not choose judge when weight train')
+                raise ValueError
+
             self.data['update_string'] = self.data['judge_string']
             if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
                 self.data['random_level'] = 0.1
             else:
                 self.data['random_level'] = 0.0
+
+    def push(self, updata):
+        # rewrite push method for some data. which is needless to show
+        self.data['global_step'] = 0
+        # push
+        for name, value in self.data.items():
+            updata[name] = value
 
 
 if __name__ == '__main__':

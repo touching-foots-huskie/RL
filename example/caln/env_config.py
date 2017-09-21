@@ -38,7 +38,6 @@ class env_config(configure.sub_config):
     def refresh(self, name=None):
         # attribute:
         if name == 'attribute_num':
-            # when update this
             try:
                 self.data['attribute_num'] = int(self.data['attribute_num'])
                 for i in range(self.data['attribute_num']):
@@ -56,24 +55,10 @@ class env_config(configure.sub_config):
 
         elif name == 'base':
             # when chosen base:
-            name_list = self.data['base']
-            i = 0
-            while ('attribute_{}'.format(i) in self.data.keys()):
-                name_list += ',{}'.format(self.data['attribute_{}'.format(i)])
-                i += 1
-            self.data['environment'] = name_list
-
             self.data['action_dim'] = self.knowledge['action_dims'][self.data['base']]
             self.data['dim_list'] = self.knowledge['dim_lists'][self.data['base']]
 
         elif name[:9] == 'attribute':
-            # change name first:
-            name_list = self.data['base']
-            i = 0
-            while ('attribute_{}'.format(i) in self.data.keys()):
-                name_list += ',{}'.format(self.data['attribute_{}'.format(i)])
-                i += 1
-            self.data['environment'] = name_list
             # then dim
             i = 0
             try:
@@ -86,6 +71,12 @@ class env_config(configure.sub_config):
         else:
             pass
 
+        name_list = self.data['base']
+        i = 0
+        while ('attribute_{}'.format(i) in self.data.keys()):
+            name_list += ',{}'.format(self.data['attribute_{}'.format(i)])
+            i += 1
+        self.data['environment'] = name_list
 
 if __name__ == '__main__':
     env_config('environment')
