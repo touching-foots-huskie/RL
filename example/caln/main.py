@@ -52,8 +52,16 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
 def run_policy(myconfig, myenv, mycontainer, mypolicy):
     results = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
     # add disc_sum
-    for i in range(int(myconfig['batch_epochs'])):
+    batch_epochs = int(myconfig['batch_epochs'])
+    filter_gate = float(myconfig['filter_ratio'])*batch_epochs
+    for i in range(batch_epochs):
         result = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+        # filter:
+        if eval(myconfig['filter']):
+            if i < filter_gate:
+                if result['eval_value'][0] > float(myconfig['filter_threshold']):
+                    continue  # jump this part
+
         for key, value in result.items():
             results[key] = np.concatenate([results[key], value], axis=0)
     return results

@@ -1,0 +1,76 @@
+<mujoco model='basic move'>
+    <!-- This file is going to make the structure of a moving_hand -->
+	<compiler inertiafromgeom='true' angle='degree'/>
+    <default>
+        <joint limited='true' damping='1' armature='0'/>
+        <geom contype='1' conaffinity='1' condim='1' rgba='0.5 0.3 .4 1'
+        	margin="0.001" solref=".02 1" solimp=".8 .8 .01"/>
+        <motor ctrlrange='-.4 .4' ctrllimited='true'/>
+		<!-- add some classes -->
+    </default>
+
+    <option timestep='0.002' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>
+
+    <size nstack="1000000"/>
+
+    <visual>
+	<!-- the visual part, which is not very important -->
+        <map fogstart="3" fogend="5" force="0.1" znear="0.5"/>
+        <quality shadowsize="2048" offsamples="8"/>
+        <global offwidth="800" offheight="800"/>
+		<!-- the size of the scenary -->
+    </visual>
+
+    <asset>
+        <!-- asset is the predefined setting -->
+		<texture type="skybox" builtin="gradient" width="128" height="128" rgb1=".4 .6 .8" 
+            rgb2="0 0 0"/>  
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" 
+            rgb1="0.4 0.4 0.1" rgb2="0.5 0.5 0.1" markrgb="1 1 1" random="0.01"/>  
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" 
+            width="512" height="512"/>  
+		<!-- the material is a more complicated structure -->
+        <material name='MatPlane' reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+    <worldbody>
+		<!-- the light is bounded on a body-->
+        <light mode='targetbodycom' target='ball' directional='false' castshadow='false'  diffuse='.8 .8 .8' specular='0.3 0.3 0.3' pos='1 1 4.0' dir='0 0 -1'/>
+		<!-- structure for the hand first -->
+		<body name='ball' pos='0.0 0.0 0.0'>
+            <!-- transition free on this plane -->
+			<joint name='slide1' type='slide' range='-1.0 1.0' axis='1 0 0' />
+			<joint name='slide2' type='slide' range='-1.0 1.0' axis='0 1 0' />
+			<geom type='sphere' size="0.04" rgba=".5 .0 .5 1"/>
+		</body>	
+        <!-- button -->
+		<body name='slidebar' pos='0.0 0.0 0.0'>
+			<site name='button' type='sphere' size='0.1' rgba='1 1 1 0'/>
+		</body>
+
+		<!-- a coordinate around coordinate of size 0.15 -->
+        <body name='obstacle' pos='0 0 0'>
+		<!-- the obstacle can move among all of the area -->
+            <inertial pos='0 0 0' mass='10000000' diaginertia='166.67 166.67 166.67' />
+		    <geom name = 'safe_ball' type='sphere' rgba='1 1 1 1' size = '0.14'/>
+		    <site name='safe_area' type='sphere' rgba='1 1 1 0' size='0.15'/>
+			<joint name='slide3' type='slide' range='-1.0 1.0' axis='1 0 0' />
+			<joint name='slide4' type='slide' range='-1.0 1.0' axis='0 1 0' />
+        </body>
+
+        <camera name="camera1" mode="fixed" pos="0 0 2.6" /> 
+        <camera name="camera2" mode="fixed" pos="0 0.5 0" quat="0 0 1 1"/>
+    </worldbody>
+	<!-- body finished -->
+	<sensor>
+		<touch name='touch_button' site='button'/>
+		<touch name='safety' site='safe_area'/>
+	</sensor>
+	<!-- actuator -->
+    <actuator>
+		<motor joint='slide1' name='slide1' ctrlrange='-0.5 0.5'/>
+		<motor joint='slide2' name='slide2' ctrlrange='-0.5 0.5'/>
+		<motor joint='slide3' name='slide3' ctrlrange='-0.5 0.5'/>
+		<motor joint='slide4' name='slide4' ctrlrange='-0.5 0.5'/>
+	</actuator>
+</mujoco>

@@ -1,0 +1,101 @@
+<mujoco model='arm'>
+    <!-- This file is going to make the structure of a moving_hand -->
+	<compiler inertiafromgeom='true' angle='degree'/>
+    <default>
+        <joint limited='true' damping='1' armature='0'/>
+        <geom contype='1' conaffinity='1' condim='1' rgba='0.5 0.3 .4 1'
+        	margin="0.001" solref=".02 1" solimp=".8 .8 .01"/>
+        <motor ctrlrange='-.4 .4' ctrllimited='true'/>
+		<!-- add some classes -->
+    </default>
+
+    <option timestep='0.002' iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="elliptic"/>
+
+    <size nstack="1000000"/>
+
+    <visual>
+	<!-- the visual part, which is not very important -->
+        <map fogstart="3" fogend="5" force="0.1" znear="0.5"/>
+        <quality shadowsize="2048" offsamples="8"/>
+        <global offwidth="800" offheight="800"/>
+		<!-- the size of the scenary -->
+    </visual>
+
+    <asset>
+        <!-- asset is the predefined setting -->
+		<texture type="skybox" builtin="gradient" width="128" height="128" rgb1=".4 .6 .8" 
+            rgb2="0 0 0"/>  
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" 
+            rgb1="0.4 0.4 0.1" rgb2="0.5 0.5 0.1" markrgb="1 1 1" random="0.01"/>  
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" 
+            width="512" height="512"/>  
+		<!-- the material is a more complicated structure -->
+        <material name='MatPlane' reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+    <worldbody>
+        <!--geom name='floor' pos='0 0 0' size='1.0 1.0 .125' type='plane' rgba='0 0 0 0' condim='3'-->
+		<!-- the light is bounded on a body-->
+        <light mode='targetbodycom' target='arm' directional='false' castshadow='false'  diffuse='.8 .8 .8' specular='0.3 0.3 0.3' pos='1 1 4.0' dir='0 0 -1'/>
+		<!-- structure for the hand first -->
+		<body name='arm' pos='0.0 0.0 0.0' axisangle='0 0 1 -90'>
+		<joint name='slide1' type='slide' range='-0.8 -0.2' axis='0 1 0' />
+			<geom type='sphere' size="0.04" rgba=".5 .0 .5 1"/>
+			<body name='arm1' pos='0 0.1 0'>
+				<geom type= 'capsule' size='0.03 0.1' quat="0 0 1 1" rgba=".6 .6 .2 1"/>
+				<joint name='hinge1' type='hinge' pos='0 -0.1 0' range='-180 180'/>
+				<geom type='sphere' pos='0 0.1 0' size="0.04" rgba=".5 .0 .5 1"/>
+					<body name='arm2' pos='0 0.1 0'>
+					<geom type= 'capsule' size='0.03 0.1' pos='0 0.1 0'  quat="0 0 1 1" rgba=".6 .6 .2 1"/>
+					<joint name='hinge2' type='hinge' range='-180 180'/>
+					<geom type='sphere' pos='0 0.2 0' size="0.04" rgba=".5 .0 .5 1"/>
+						<body name='arm3' pos='0 0.2 0'>
+						<geom type= 'capsule' size='0.03 0.1' pos='0 0.1 0'  quat="0 0 1 1" rgba=".6 .6 .2 1"/>
+						<geom type='sphere' pos='0 0.2 0' size="0.04" rgba=".5 .0 .5 1"/>
+						<joint name='hinge3' type='hinge' range='-180 180'/>
+							<body name='arm4' pos='0 0.2 0'>
+							<geom type= 'capsule' size='0.03 0.1' pos='0 0.1 0'  quat="0 0 1 1" rgba=".6 .6 .2 1"/>
+							<joint name='hinge4' type='hinge' range='-180 180'/>
+							</body>
+						</body>
+					</body>
+			</body>
+		</body>	
+		<body name='slidebar' pos='0.0 0 0'>
+			<site name='button' type='sphere' size='0.1' rgba='1 1 1 1'/>
+			<geom type='cylinder' size='0.05 0.05' rgba=".5 .5 .0 1"/>
+			<joint name='b_slide1' type='slide' range='0.0 0.6' axis='1 0 0' />
+			<joint name='b_slide2' type='slide' range='-0.3 0.3' axis='0 1 0' />
+		</body>
+		<!-- a coordinate around coordinate of size 0.15 -->
+
+        <body name='obstacle' pos='0 0 0'>
+		<!-- the obstacle can move among all of the area -->
+            <inertial pos='0 0 0' mass='10000000' diaginertia='166.67 166.67 166.67' />
+		    <geom name = 'safe_ball' type='sphere' rgba='1 1 1 1' size = '0.14'/>
+		    <site name='safe_area' type='sphere' rgba='1 1 1 0' size='0.15'/>
+			<joint name='safe_slide1' type='slide' range='-0.1 0.1' axis='1 0 0' />
+			<joint name='safe_slide2' type='slide' range='-0.5 0.5' axis='0 1 0' />
+        </body>
+
+        <camera name="camera1" mode="fixed" pos="0 0 2.6" /> 
+        <camera name="camera2" mode="fixed" pos="0 0.5 0" quat="0 0 1 1"/>
+    </worldbody>
+	<!-- body finished -->
+	<sensor>
+		<touch name='touch button' site='button'/>
+		<touch name='safe_area' site='safe_area'/>
+	</sensor>
+	<!-- actuator -->
+	<actuator>
+    	<motor joint='slide1' name='slide1'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='hinge1' name='hinge1'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='hinge2' name='hinge2'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='hinge3' name='hinge3'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='hinge4' name='hinge4'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='safe_slide1' name='safe_slide1'  ctrlrange='-0.9 0.9'/>
+    	<motor joint='safe_slide2' name='safe_slide2'  ctrlrange='-0.9 0.9'/>
+
+	</actuator>
+	
+</mujoco>

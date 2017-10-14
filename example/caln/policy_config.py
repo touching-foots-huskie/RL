@@ -34,6 +34,9 @@ class policy_config(configure.sub_config):
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
         self.data['total_episodes'] = 1000
         self.data['random_level'] = 0.1
+        self.data['filter'] = 'True'
+        self.data['filter_threshold'] = 0.5
+        self.data['filter_ratio'] = 0.5
         self.data['lambda'] = 1.1
         self.data['gamma'] = 0.80
         self.data['lam'] = 0.9
@@ -56,6 +59,8 @@ class policy_config(configure.sub_config):
         self.knowledge['long_term_batch'] = [10, 20]
         self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
+        # training method:
+        self.knowledge['filter'] = ['True', 'False']
         # learning rate:
         self.knowledge['lr_cs'] = {'ball': 1e-2/np.sqrt(np.sqrt(200)),
                                    'arm': 1e-2/np.sqrt(np.sqrt(500)), '3darm': 1e-2/np.sqrt(np.sqrt(500))}
