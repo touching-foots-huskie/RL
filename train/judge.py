@@ -16,11 +16,11 @@ def judge_wrapper(config):
 
 
 def random_judge(config):
-    random_flag = (config['random_level'] > config['threshold'])
-    episode_flag = (config['global_step'] > config['total_episodes'])
+    random_flag = (config['random_level'] > float(config['threshold']))
+    episode_flag = (config['global_step'] > int(config['total_episodes']))
     return random_flag or episode_flag
 
 
 def episode_judge(config):
-    episode_flag = (config['global_step'] > config['total_episodes'])
+    episode_flag = (config['global_step'] > int(config['total_episodes']))
     return episode_flag

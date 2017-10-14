@@ -26,7 +26,7 @@ class policy_config(configure.sub_config):
         self.data['save_dir'] = 'train_log/model/'
         self.data['log_dir'] = 'train_log/log/'
         self.data['training_mark'] = ''
-        self.data['epsilon'] = 0.05
+        self.data['epsilon'] = 0.1
         self.data['epochs'] = 20
         self.data['max_iter_num'] = 10
         self.data['batch_num'] = 256
@@ -57,7 +57,7 @@ class policy_config(configure.sub_config):
         self.knowledge['batch_num'] = [256, 128, 64, 32]
         self.knowledge['batch_epochs'] = [40, 80, 120, 20]
         self.knowledge['long_term_batch'] = [10, 20]
-        self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000]
+        self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000, 10]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
         # training method:
         self.knowledge['filter'] = ['True', 'False']

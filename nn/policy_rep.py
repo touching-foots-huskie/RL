@@ -149,12 +149,14 @@ class policy_rep(object):
         for i, value in enumerate(self.policy_config['a_param_save'].split(',')):
             self.policy_config.data['param_save']['{}_action'.format(self.policy_config['a_names'].split(',')[i])] = True if value == 'True' else False
         # c
-        for i, value in enumerate(self.policy_config['c_param_save'].split(',')):
-            self.policy_config.data['param_save']['{}_value'.format(self.policy_config['c_names'].split(',')[i])] = True if value == 'True' else False
+        if self.policy_config.data['c_activate']:
+            for i, value in enumerate(self.policy_config['c_param_save'].split(',')):
+                self.policy_config.data['param_save']['{}_value'.format(self.policy_config['c_names'].split(',')[i])] = True if value == 'True' else False
 
         # t
-        for i, value in enumerate(self.policy_config['t_param_save'].split(',')):
-            self.policy_config.data['param_save']['{}_activation'.format(self.policy_config['t_names'].split(',')[i])] = True if value == 'True' else False
+        if self.policy_config.data['t_activate']:
+            for i, value in enumerate(self.policy_config['t_param_save'].split(',')):
+                self.policy_config.data['param_save']['{}_activation'.format(self.policy_config['t_names'].split(',')[i])] = True if value == 'True' else False
 
         for name in self.param_dict.keys():
             if self.policy_config.data['param_save'][name]:
@@ -167,14 +169,16 @@ class policy_rep(object):
             self.policy_config.data['param_restore'][
                 '{}_action'.format(self.policy_config['a_names'].split(',')[i])] = True if value == 'True' else False
         # c
-        for i, value in enumerate(self.policy_config['c_param_restore'].split(',')):
-            self.policy_config.data['param_restore'][
-                '{}_value'.format(self.policy_config['c_names'].split(',')[i])] = True if value == 'True' else False
+        if self.policy_config.data['c_activate']:
+            for i, value in enumerate(self.policy_config['c_param_restore'].split(',')):
+                self.policy_config.data['param_restore'][
+                    '{}_value'.format(self.policy_config['c_names'].split(',')[i])] = True if value == 'True' else False
 
         # t
-        for i, value in enumerate(self.policy_config['t_param_restore'].split(',')):
-            self.policy_config.data['param_restore']['{}_activation'.format(
-                self.policy_config['t_names'].split(',')[i])] = True if value == 'True' else False
+        if self.policy_config.data['t_activate']:
+            for i, value in enumerate(self.policy_config['t_param_restore'].split(',')):
+                self.policy_config.data['param_restore']['{}_activation'.format(
+                    self.policy_config['t_names'].split(',')[i])] = True if value == 'True' else False
 
         for name in self.param_dict.keys():
             if self.policy_config.data['param_restore'][name]:

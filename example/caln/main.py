@@ -108,6 +108,8 @@ def main():
     long_term_performance = deque([0.0]*whole_config['long_term_batch'],
                                   maxlen=whole_config['long_term_batch'])
 
+    # restore:
+    mypolicy.restore()
     while not flag:
         results = run_policy(whole_config, myenv, mycontainer, mypolicy)
         if eval_func(results, whole_config, long_term_performance):
@@ -119,6 +121,10 @@ def main():
 
         whole_config['global_step'] += 1
         flag = judge_func(whole_config)
+
+    # save:
+    mypolicy.save()
+    print('Process end!')
 
 
 if __name__ == '__main__':

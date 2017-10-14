@@ -6,7 +6,6 @@ def write_dict():
     addition_list = ['safety', 'door', 'speed', 'force', None]
     part_list = ['action', 'value', 'activation']
     # combination:
-    saver_dict = {}
     for base in base_list:
         for addition in addition_list:
             for part in part_list:
