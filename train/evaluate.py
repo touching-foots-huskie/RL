@@ -6,20 +6,21 @@ import numpy as np
 
 def eval_wrapper(config):
     eval_string = config['eval_string']
-    if eval_string == 'sum':
+    if (eval_string == 'sum') or (eval_string == 'dis_sum'):
         return sum_eval
-    elif eval_string == 'dis_sum':
-        return dis_sum_eval
     else:
         print('No such eval_string!')
         raise KeyError
 
 
-def sum_eval(results, config):
-    sum_flag = (np.mean(results['sum_rewards']) > config['reward_threshold'])
+def sum_eval(results, config, long_term_performance):
+    performance = np.mean(results['eval_value'])
+    long_term_performance.append(performance)
+    average_performance = np.mean(long_term_performance)
+    # delete the unused data
+    del results['eval_value']
+    sum_flag = (average_performance > config['reward_threshold'])
+    print('episode: {}| eval_value: {}| random_level: {}'.format(config['global_step'],
+                                                             average_performance,
+                                                             config['random_level']))
     return sum_flag
-
-
-def dis_sum_eval(results, config):
-    dis_sum_flag = (np.mean(results['dis_sum_rewards']) > config['reward_threshold'])
-    return dis_sum_flag

@@ -13,21 +13,21 @@ def discount(x, gamma):
 
 
 def add_disc_sum_rew(result, gamma):
-    rewards = result['rewards']
+    rewards = np.array(result['rewards']).ravel()
     disc_sum_rew = discount(rewards, gamma)
-    result['disc_sum_rew'] = disc_sum_rew
+    result['disc_sum_rew'] = disc_sum_rew.reshape([-1, 1])
 
 
 def add_gae(result, gamma, lam):
-    rewards = np.array(result['rewards'])
-    values = np.array(result['values'])
+    rewards = np.array(result['rewards']).ravel()
+    values = np.array(result['values']).ravel()
     # temporal differences
     try:
         if values.shape != ():
-            tds = rewards - values + np.concatenate([values[1:] * gamma,[[0]]], axis=0)
+            tds = rewards - values + np.concatenate([values[1:] * gamma,[0]], axis=0)
         else:
             tds = rewards
     except Exception as e:
         print(e)
     advantages = discount(tds, gamma * lam)
-    result['advantages'] = advantages
+    result['advantages'] = advantages.reshape([-1, 1])

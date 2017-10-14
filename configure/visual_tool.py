@@ -6,7 +6,7 @@ import tkinter as tki
 from tkinter import ttk
 from collections import OrderedDict
 
-global root, button_line, text_dict, refresh_dict
+global root, button_line, text_dict, refresh_dict, current_pane
 text_dict = OrderedDict()
 refresh_dict = OrderedDict()
 
@@ -57,11 +57,13 @@ def help_menu(menu_frame):
     return help_btn
 
 
-def establish_sub_pane(content_pane, sub_config, config, y_num=10):
+def establish_sub_pane(content_pane, sub_config, config, y_num=15):
+    global current_pane
     clear_window(content_pane)
     for i, (key, value) in enumerate(sub_config.data.items()):
         establish_attribute_entry(content_pane, i, y_num, key, value, sub_config)
     config.refresh()
+    current_pane = sub_config.name
 
 
 def establish_attribute_entry(content_pane, id, y_num, key, value, sub_config):
@@ -133,11 +135,12 @@ def refresh_sub_config(event, sub_config, name):
 
 
 def done(config):
+    global current_pane
     config.refresh()
     # print all:
     for key, value in config.data.items():
         print('{}:{}'.format(key, value))
-
+    refresh_dict[current_pane]()
     config.save('train_log/{}'.format(get_time()))
 
 
