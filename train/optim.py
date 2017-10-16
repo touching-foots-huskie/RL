@@ -10,7 +10,7 @@ import numpy as np
 from RL.train.shuffle_train import train
 
 
-@train
+@train(False)
 def process_a(results, myconfig, mypolicy):
     # state_dicts 
     epochs = int(myconfig['epochs'])
@@ -26,7 +26,7 @@ def process_a(results, myconfig, mypolicy):
     return results, epochs, batch_num, update_func
 
 
-@train
+@train(True)
 def process_c(results, myconfig, mypolicy):
     # state_dicts
     epochs = int(myconfig['epochs'])
@@ -35,7 +35,7 @@ def process_c(results, myconfig, mypolicy):
     return results, epochs, batch_num, update_func
 
 
-@train
+@train(True)
 def process_t(results, myconfig, mypolicy):
     # state_dicts
     epochs = int(myconfig['epochs'])

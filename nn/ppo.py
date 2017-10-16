@@ -16,7 +16,7 @@ class policy_rep(pr.policy_rep):
         ## Loss structures:
         # c_loss
         if self.policy_config.data['c_activate'] and (self.policy_config.data['c_trainable'].split(',')[self.index] == 'True'):
-            self.Adam_c = tf.train.AdamOptimizer(self.policy_config.data['lr_c'])
+            self.Adam_c = tf.train.AdamOptimizer(float(self.policy_config.data['lr_c']))
             with tf.name_scope('c_loss'):
                 self.val_ph = tf.placeholder(tf.float32, (None,1), 'val_valfunc')
                 self.map_dict['disc_sum_rew'] = self.val_ph
@@ -32,7 +32,7 @@ class policy_rep(pr.policy_rep):
             raw_norm = tf.contrib.distributions.Normal(self.means[self.base_name], self.sigma, name = 'raw_normal')
             self.raw_A = tf.squeeze(raw_norm.sample(), name = 'raw_action')
 
-            self.Adam_t = tf.train.AdamOptimizer(self.policy_config.data['lr_t'])
+            self.Adam_t = tf.train.AdamOptimizer(float(self.policy_config.data['lr_t']))
             with tf.name_scope('t_loss'):
                 self.nc_val_ph = tf.placeholder(tf.float32, (None,1), 'none_compensate_value')
                 # activation is supposed to = value - nc_value > 0
@@ -44,7 +44,7 @@ class policy_rep(pr.policy_rep):
                 tf.summary.scalar('t_loss', self.t_loss)
         # a_loss
         if self.policy_config.data['a_trainable'].split(',')[self.index]:
-            self.Adam_a = tf.train.AdamOptimizer(self.policy_config.data['lr_a'])
+            self.Adam_a = tf.train.AdamOptimizer(float(self.policy_config.data['lr_a']))
             with tf.name_scope('a_loss'):
                 with tf.name_scope('old_normal'):
                     self.old_sigma_ph = tf.placeholder(tf.float32, (None, self.action_dim,), 'old_sigma')

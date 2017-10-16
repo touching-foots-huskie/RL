@@ -38,7 +38,7 @@ class policy_config(configure.sub_config):
         self.data['filter_threshold'] = 0.5
         self.data['filter_ratio'] = 0.5
         self.data['lambda'] = 1.1
-        self.data['gamma'] = 0.80
+        self.data['gamma'] = 0.9
         self.data['lam'] = 0.9
         self.data['reward_threshold'] = 0.9
 

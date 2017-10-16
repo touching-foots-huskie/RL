@@ -160,7 +160,8 @@ class policy_rep(object):
 
         for name in self.param_dict.keys():
             if self.policy_config.data['param_save'][name]:
-                self.saver_dict[name].save(self.sess, self.save_path_dict[name])
+                self.saver_dict[name].save(self.sess,
+                                           self.save_path_dict['{}_{}'.format(self.base_name, name)])
 
     def restore(self):
         self.policy_config.data['param_restore'] = {}
@@ -182,7 +183,8 @@ class policy_rep(object):
 
         for name in self.param_dict.keys():
             if self.policy_config.data['param_restore'][name]:
-                self.saver_dict[name].restore(self.sess, self.save_path_dict[name])
+                self.saver_dict[name].restore(self.sess,
+                                              self.save_path_dict['{}_{}'.format(self.base_name, name)])
 
     def restart_part(self, name):
         self.sess.run(self.init_dicts[name])         

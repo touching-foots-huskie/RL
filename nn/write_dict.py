@@ -12,7 +12,7 @@ def write_dict():
                 if addition != None:
                     saver_dict['{}_{}_{}'.format(base, addition, part)] = 0
                 else:
-                    saver_dict['{}_{}'.format(base, part)] = 0
+                    saver_dict['{}_{}_{}'.format(base, base, part)] = 0
 
     for i, name in enumerate(saver_dict.keys()):
         saver_dict[name] = str(i)
