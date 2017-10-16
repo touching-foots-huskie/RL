@@ -20,7 +20,7 @@ class policy_config(configure.sub_config):
     def get_data(self):
         self.data['mode'] = ''
         self.data['system_mark'] = ''
-        self.data['eval_string'] = 'sum'
+        self.data['eval_string'] = 'dis_sum'
         self.data['update_string'] = 'posion_curriculum'
         self.data['judge_string'] = 'posion_curriculum'
         self.data['epoch_per_level'] = 10

@@ -64,7 +64,7 @@ class env:
                 self.target_num = 0 # target_num is the number of target dimension of itself. In attribute_structure, there is no place for it.
                 self.add_state_num_list = [2]
                 self.add_action_num_list = [2]
-                self.init_qpos =[ [-0.1, -0.1, 0.1, 0.1],
+                self.init_qpos =[[-0.1, -0.1, 0.1, 0.1],
                                   [0.1, 0.1, -0.1, -0.1],
                                   [-0.1, 0.1, 0.1, -0.1],
                                   [0.1, -0.1, -0.1, 0.1],
@@ -477,14 +477,16 @@ class env:
         return self.get_state('state'), self.get_state('target'), self.get_state('add')
 
     def set_start_pool(self, starts):
-        # starts_pool should be a list of start dict with 'start', 'target', 'add_state'
+        # starts_pool should be a list
         self.start_pool = starts
         self.start_pool_num = len(starts)
 
     def reset_from_pool(self):
         num = random.randint(0, self.start_pool_num - 1)
         start = self.start_pool[num]
-        self.inverse_set(start['state'], start['target'], start['add_state'])
+        self.inverse_set(start[0], start[1], start[2])
+        return self.get_state('state'), self.get_state('target'), self.get_state('add')
+
 
     # image
     def get_picture(self):

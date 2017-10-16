@@ -15,7 +15,7 @@ from RL.nn.ppo import policy_rep
 from RL.train.judge import judge_wrapper
 from RL.train.update import update_wrapper
 from RL.train.evaluate import eval_wrapper
-from RL.train.performace_filter import performace_filter
+from RL.train.performance_filter import performance_filter
 import RL.utils.value_tools as V
 from RL.train import optim
 import numpy as np
@@ -35,11 +35,13 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
 
     action = step(mypolicy, mycontainer, data)
 
+    # run
     while ((i < myconfig['max_iter_num']) and not done):
         done, data = mycontainer.push(myenv.step(action))
         action = step(mypolicy, mycontainer, data)
         i += 1
-    # add after done
+
+    # data process: evaluate
     gamma = float(myconfig['gamma'])
     lam = float(myconfig['lam'])
     V.add_disc_sum_rew(mycontainer, gamma)
@@ -48,34 +50,37 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
     if myconfig['eval_string'] == 'sum':
         mycontainer['eval_value'] = [np.sum(mycontainer['rewards'])]
     elif myconfig['eval_string'] == 'dis_sum':
-        mycontainer['eval_value'] = [np.sum(mycontainer['disc_sum_rew'])]
+        mycontainer['eval_value'] = [np.mean(mycontainer['disc_sum_rew'])]
     else:
         print('No such eval_string')
         raise KeyError
-    return mycontainer.pop(), mycontainer.get_start_state()
+    return mycontainer.pop()
 
 
 def run_policy(myconfig, myenv, mycontainer, mypolicy):
-    results, start_state = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+    results = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+    del results['start_pos']
+
     # save results in a list:
     result_list = []
-    start_states = [start_state]
     batch_epochs = int(myconfig['batch_epochs'])
     for i in range(batch_epochs):
-        result, start_state = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+        result = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
         result_list.append(result)
-        start_states.append(start_state)
     # filter when reset from random:
     if not myconfig['reset_from_pool']:
-        result_list = filter(result_list,
+        result_list, good_starts = performance_filter(result_list,
                              float(myconfig['threshold_low']),
                              float(myconfig['threshold_high']))
-        myenv.set_start_pool(result_list)
-        myconfig['reset_from_pool'] = True
+        if len(good_starts) != 0:
+            myenv.set_start_pool(good_starts)
+            myconfig['reset_from_pool'] = True
 
     for result in result_list:
+        # we don't use start_pos more
         for key, value in result.items():
-            results[key] = np.concatenate([results[key], value], axis=0)
+            if key != 'start_pos':
+                results[key] = np.concatenate([results[key], value], axis=0)
 
     return results
 

@@ -17,7 +17,7 @@ class container(object):
         #
         state, target_state, add_state_list = args[0]
         # save initial state:
-        self.data = {}
+        self.data = dict()
         self.data['states'] = [state]
         self.data['targets'] = [target_state]
         for i in range(self.attrib_num):
@@ -25,10 +25,10 @@ class container(object):
         self.data['rewards'] = [[0.0]]
         self.data['old_acts'] = []
         self.data['values'] = []
-        self.start_pos = args
-        self.done = 0 # reset structure
+        self.data['start_pos'] = args[0]
+        self.done = 0  # reset structure
 
-        action_data = {}
+        action_data = dict()
         action_data['states'] = np.array([state])
         action_data['targets'] = np.array([target_state])
         for i in range(self.attrib_num):
@@ -44,7 +44,7 @@ class container(object):
         self.data['rewards'].append([reward])
         self.done = done
         # get action data
-        action_data = {}
+        action_data = dict()
         action_data['states'] = np.array([state])
         action_data['targets'] = np.array([target_state])
         for i in range(self.attrib_num):
@@ -53,10 +53,7 @@ class container(object):
         return done, action_data
 
     def pop(self):
-        # pop is pop out all of the data.// return list
+        # pop is pop out all of the data.// return np.array
+        for key, value in self.data.items():
+            self.data[key] = np.array(value)
         return self.data
-
-    def get_start_state(self):
-        # start_pos[0] can be used in inverse_set
-        return self.start_pos[0]
-        
