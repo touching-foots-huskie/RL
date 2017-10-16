@@ -16,6 +16,7 @@ class container(object):
     def reset(self, *args):
         #
         state, target_state, add_state_list = args[0]
+        # save initial state:
         self.data = {}
         self.data['states'] = [state]
         self.data['targets'] = [target_state]

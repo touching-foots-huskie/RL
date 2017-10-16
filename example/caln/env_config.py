@@ -75,6 +75,12 @@ class env_config(configure.sub_config):
             i += 1
         self.data['environment'] = name_list
 
+    def push(self, updata):
+        self.data['reset_from_pool'] = False
+        # push
+        for name, value in self.data.items():
+            updata[name] = value
+
 
 if __name__ == '__main__':
     env_config('environment')

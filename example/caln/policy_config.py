@@ -21,8 +21,9 @@ class policy_config(configure.sub_config):
         self.data['mode'] = ''
         self.data['system_mark'] = ''
         self.data['eval_string'] = 'sum'
-        self.data['update_string'] = 'curriculum'
-        self.data['judge_string'] = 'curriculum'
+        self.data['update_string'] = 'posion_curriculum'
+        self.data['judge_string'] = 'posion_curriculum'
+        self.data['epoch_per_level'] = 10
         self.data['save_dir'] = 'train_log/model/'
         self.data['log_dir'] = 'train_log/log/'
         self.data['training_mark'] = ''
@@ -34,9 +35,8 @@ class policy_config(configure.sub_config):
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
         self.data['total_episodes'] = 1000
         self.data['random_level'] = 0.1
-        self.data['filter'] = 'True'
-        self.data['filter_threshold'] = 0.5
-        self.data['filter_ratio'] = 0.5
+        self.data['threshold_low'] = 0.1
+        self.data['threshold_high'] = 0.9
         self.data['lambda'] = 1.1
         self.data['gamma'] = 0.9
         self.data['lam'] = 0.9
@@ -48,8 +48,8 @@ class policy_config(configure.sub_config):
         self.knowledge['mode'] = ['task_train', 'attribute_train', 'weight_train',
                                   'test']
         self.knowledge['eval_string'] = ['sum', 'dis_sum']
-        self.knowledge['update_string'] = ['curriculum', 'reverse_curriculum', 'stable']
-        self.knowledge['judge_string'] = ['curriculum', 'reverse_curriculum', 'stable']
+        self.knowledge['update_string'] = ['curriculum', 'reverse_curriculum', 'posion_curriculum', 'stable']
+        self.knowledge['judge_string'] = ['curriculum', 'reverse_curriculum', 'posion_curriculum', 'stable']
         # param choice:
         self.knowledge['epsilon'] = [0.2, 0.1, 0.05]
         self.knowledge['epochs'] = [20, 10, 5, 40]
@@ -59,8 +59,6 @@ class policy_config(configure.sub_config):
         self.knowledge['long_term_batch'] = [10, 20]
         self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000, 10]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
-        # training method:
-        self.knowledge['filter'] = ['True', 'False']
         # learning rate:
         self.knowledge['lr_cs'] = {'ball': 1e-2/np.sqrt(np.sqrt(200)),
                                    'arm': 1e-2/np.sqrt(np.sqrt(500)), '3darm': 1e-2/np.sqrt(np.sqrt(500))}
@@ -225,6 +223,9 @@ class policy_config(configure.sub_config):
             self.data['judge_string'] = self.data['update_string']
             if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
                 self.data['random_level'] = 0.1
+            elif self.data['update_string'] == 'posion_curriculum':
+                self.data['random_level'] = 0.1
+                self.data['epoch_per_level'] = 10
             else:
                 self.data['random_level'] = 0.0
 
@@ -236,6 +237,9 @@ class policy_config(configure.sub_config):
             self.data['update_string'] = self.data['judge_string']
             if (self.data['update_string'] == 'curriculum') or (self.data['update_string'] == 'reverse_curriculum'):
                 self.data['random_level'] = 0.1
+            elif self.data['update_string'] == 'posion_curriculum':
+                self.data['random_level'] = 0.1
+                self.data['epoch_per_level'] = 10
             else:
                 self.data['random_level'] = 0.0
 

@@ -9,6 +9,10 @@ def update_wrapper(config):
         return random_update
     elif update_string in ['stable']:
         return episode_update
+    elif update_string in ['posion_curriculum']:
+        # you will get a counter:
+        config['counter'] = 0
+        return posion_update
     else:
         print('No such update_string!')
         raise KeyError
@@ -20,3 +24,12 @@ def random_update(config):
 
 def episode_update(config):
     pass
+
+
+def posion_update(config):
+    config['counter'] += 1
+    # another random start: total epoch_per_level
+    config['reset_from_pool'] = False
+    if config['counter'] >= config['epoch_per_level']:
+        config['random_level'] *= config['lambda']
+        config['counter'] = 0

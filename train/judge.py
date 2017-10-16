@@ -6,7 +6,7 @@
 
 def judge_wrapper(config):
     judge_string = config['judge_string']
-    if judge_string in ['curriculum', 'reverse_curriculum']:
+    if judge_string in ['curriculum', 'reverse_curriculum', 'posion_curriculum']:
         return random_judge
     elif judge_string in ['stable']:
         return episode_judge

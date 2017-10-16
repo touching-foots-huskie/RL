@@ -15,7 +15,7 @@ from RL.nn.ppo import policy_rep
 from RL.train.judge import judge_wrapper
 from RL.train.update import update_wrapper
 from RL.train.evaluate import eval_wrapper
-from RL.train.filter import filter
+from RL.train.performace_filter import performace_filter
 import RL.utils.value_tools as V
 from RL.train import optim
 import numpy as np
@@ -26,7 +26,13 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
     # run episode means run and update for certain times;
     i = 0
     done = False
-    data = mycontainer.reset(myenv.reset(myconfig['random_level']))
+
+    # different type of reset:
+    if myconfig['reset_from_pool']:
+        data = mycontainer.reset(myenv.reset_from_pool())
+    else:
+        data = mycontainer.reset(myenv.reset(myconfig['random_level']))
+
     action = step(mypolicy, mycontainer, data)
 
     while ((i < myconfig['max_iter_num']) and not done):
@@ -46,24 +52,31 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
     else:
         print('No such eval_string')
         raise KeyError
-    return mycontainer.pop()
+    return mycontainer.pop(), mycontainer.get_start_state()
 
 
 def run_policy(myconfig, myenv, mycontainer, mypolicy):
-    results = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
-    # add disc_sum
+    results, start_state = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+    # save results in a list:
+    result_list = []
+    start_states = [start_state]
     batch_epochs = int(myconfig['batch_epochs'])
-    filter_gate = float(myconfig['filter_ratio'])*batch_epochs
     for i in range(batch_epochs):
-        result = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
-        # filter:
-        if eval(myconfig['filter']):
-            if i < filter_gate:
-                if result['eval_value'][0] > float(myconfig['filter_threshold']):
-                    continue  # jump this part
+        result, start_state = run_episode(myconfig=myconfig, myenv=myenv, mycontainer=mycontainer, mypolicy=mypolicy)
+        result_list.append(result)
+        start_states.append(start_state)
+    # filter when reset from random:
+    if not myconfig['reset_from_pool']:
+        result_list = filter(result_list,
+                             float(myconfig['threshold_low']),
+                             float(myconfig['threshold_high']))
+        myenv.set_start_pool(result_list)
+        myconfig['reset_from_pool'] = True
 
+    for result in result_list:
         for key, value in result.items():
             results[key] = np.concatenate([results[key], value], axis=0)
+
     return results
 
 
@@ -104,7 +117,7 @@ def main():
     judge_func = judge_wrapper(whole_config)
     update_func = update_wrapper(whole_config)
     eval_func = eval_wrapper(whole_config)
-    # long_term judger
+    # long_term judge
     long_term_performance = deque([0.0]*whole_config['long_term_batch'],
                                   maxlen=whole_config['long_term_batch'])
 

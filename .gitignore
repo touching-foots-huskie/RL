@@ -1,2 +1,5 @@
 *.json
 *event*
+*.pyc
+*.index
+*.meta

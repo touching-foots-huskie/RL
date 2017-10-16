@@ -476,6 +476,16 @@ class env:
         self.rb.sim.forward()
         return self.get_state('state'), self.get_state('target'), self.get_state('add')
 
+    def set_start_pool(self, starts):
+        # starts_pool should be a list of start dict with 'start', 'target', 'add_state'
+        self.start_pool = starts
+        self.start_pool_num = len(starts)
+
+    def reset_from_pool(self):
+        num = random.randint(0, self.start_pool_num - 1)
+        start = self.start_pool[num]
+        self.inverse_set(start['state'], start['target'], start['add_state'])
+
     # image
     def get_picture(self):
         img =  self.rb.get_picture([image_size, image_size]) 
@@ -545,3 +555,9 @@ if __name__ == '__main__':
 
     myenv = env('ball,safety,safety')
     myenv.step([1.0, 1.0])
+
+    # exam for inverse settting:
+    myenv = env('ball')
+    myenv.step([1.0, 1.0])
+    myenv.inverse_set([1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0], [])
+    print(myenv.get_state('state'))
