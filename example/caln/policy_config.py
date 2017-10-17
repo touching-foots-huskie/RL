@@ -20,7 +20,7 @@ class policy_config(configure.sub_config):
     def get_data(self):
         self.data['mode'] = ''
         self.data['system_mark'] = ''
-        self.data['eval_string'] = 'dis_sum'
+        self.data['eval_string'] = 'sum'
         self.data['update_string'] = 'posion_curriculum'
         self.data['judge_string'] = 'posion_curriculum'
         self.data['epoch_per_level'] = 10
@@ -35,7 +35,7 @@ class policy_config(configure.sub_config):
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
         self.data['total_episodes'] = 1000
         self.data['random_level'] = 0.1
-        self.data['threshold_low'] = 0.1
+        self.data['threshold_low'] = 0.05
         self.data['threshold_high'] = 0.9
         self.data['lambda'] = 1.1
         self.data['gamma'] = 0.9

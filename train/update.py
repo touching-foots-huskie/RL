@@ -27,9 +27,8 @@ def episode_update(config):
 
 
 def posion_update(config):
-    config['counter'] += 1
     # another random start: total epoch_per_level
     config['reset_from_pool'] = False
-    if config['counter'] >= config['epoch_per_level']:
+    if config['counter'] >= int(config['epoch_per_level']):
         config['random_level'] *= config['lambda']
         config['counter'] = 0

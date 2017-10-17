@@ -9,6 +9,7 @@
       <w>optim</w>
       <w>posion</w>
       <w>qpos</w>
+      <w>qvel</w>
       <w>scaler</w>
       <w>tensorboard</w>
       <w>tensorflow</w>

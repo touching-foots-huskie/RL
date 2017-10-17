@@ -487,7 +487,6 @@ class env:
         self.inverse_set(start[0], start[1], start[2])
         return self.get_state('state'), self.get_state('target'), self.get_state('add')
 
-
     # image
     def get_picture(self):
         img =  self.rb.get_picture([image_size, image_size]) 
