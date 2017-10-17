@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e83852b0-f5ef-4ef3-ba3b-3bfbedc07eab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/train/watch_dog.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/saturn.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/saturn.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configure/configure.py" afterPath="$PROJECT_DIR$/configure/configure.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configure/visual_tool.py" afterPath="$PROJECT_DIR$/configure/visual_tool.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env/mujoco/protocol.py" afterPath="$PROJECT_DIR$/env/mujoco/protocol.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/env_config.py" afterPath="$PROJECT_DIR$/example/caln/env_config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/main.py" afterPath="$PROJECT_DIR$/example/caln/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/policy_config.py" afterPath="$PROJECT_DIR$/example/caln/policy_config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/core_net.py" afterPath="$PROJECT_DIR$/nn/core_net.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/policy_rep.py" afterPath="$PROJECT_DIR$/nn/policy_rep.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/ppo.py" afterPath="$PROJECT_DIR$/nn/ppo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/write_dict.py" afterPath="$PROJECT_DIR$/nn/write_dict.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train/evaluate.py" afterPath="$PROJECT_DIR$/train/evaluate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train/shuffle_train.py" afterPath="$PROJECT_DIR$/train/shuffle_train.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train/simulate.py" afterPath="$PROJECT_DIR$/train/simulate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train/update.py" afterPath="$PROJECT_DIR$/train/update.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -531,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508199703640</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add value tools">
+      <created>1508212921776</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1508212921776</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
