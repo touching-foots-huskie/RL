@@ -2,7 +2,8 @@
 # $Usage: detail process and store data structure.
 import numpy as np
 
-class container(object):
+
+class Container(object):
     def __init__(self, attribute_num):
         # using env_info for specific protocol setting
         self.attrib_num = attribute_num 

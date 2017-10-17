@@ -20,7 +20,6 @@ def sum_eval(results, config, long_term_performance):
     # delete the unused data
     del results['eval_value']
     sum_flag = (average_performance > config['reward_threshold'])
-    print('episode: {}| eval_value: {}| random_level: {}'.format(config['global_step'],
-                                                             average_performance,
-                                                             config['random_level']))
-    return sum_flag
+    print('episode: {}| eval_value: {}| random_level: {}'.format(config['global_step'], average_performance,
+                                                                 config['random_level']))
+    return sum_flag, average_performance

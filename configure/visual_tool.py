@@ -12,11 +12,6 @@ refresh_dict = OrderedDict()
 
 
 def major_pane(config):
-    '''
-    the major pane is generating the visual tool for RL
-    :param configure: rl.configure.configure
-    :return:
-    '''
     root = tki.Tk()
     root.title('RL: Configuration')
     # create the menu frame
@@ -26,7 +21,7 @@ def major_pane(config):
     # info frame:
     info_frame = ttk.Frame(root)
     info_frame.pack(fill=tki.X, side=tki.BOTTOM)
-    # first put the colum label in a sub-frame:
+    # first put the column label in a sub-frame:
     button_line = ttk.Frame(info_frame, relief=tki.RAISED, borderwidth=1)
     button_line.pack(side=tki.TOP, fill=tki.X, padx=1, pady=1)
     # fill in it:
@@ -40,7 +35,7 @@ def major_pane(config):
         callback_func = partial(establish_sub_pane, content_pane=content_pane, sub_config=sub_config, config=config)
         refresh_dict[name] = callback_func
         ttk.Button(button_line, text=name, command=callback_func).pack(side=tki.LEFT)
-    #add two button
+    # add two button
 
     ttk.Button(button_line, text='done', command=partial(done, config=config)).pack(side=tki.LEFT)
 
@@ -52,7 +47,7 @@ def help_menu(menu_frame):
     help_btn = ttk.Menubutton(menu_frame, text='Help', underline=0)
     help_btn.pack(side=tki.LEFT, padx='2m')
     help_btn.menu = tki.Menu(help_btn)
-    help_btn.menu.add_command(label='How to', underline=0, command=HowTo)
+    help_btn.menu.add_command(label='How to', underline=0, command=how_to)
     help_btn['menu'] = help_btn.menu
     return help_btn
 
@@ -97,10 +92,10 @@ def establish_attribute_entry(content_pane, id, y_num, key, value, sub_config):
 
 
 # utils:
-def location_map(id, y_num):
+def location_map(iid, y_num):
     # for double align: using 2*x_id
-    x_id = id // y_num
-    y_id = id % y_num
+    x_id = iid // y_num
+    y_id = iid % y_num
     return 2*x_id, y_id
 
 
@@ -110,7 +105,7 @@ def get_time():
 
 
 # callback functions
-def HowTo():
+def how_to():
     print('BlaBla')
 
 
@@ -120,12 +115,6 @@ def clear_window(window):
 
 
 def refresh_sub_config(event, sub_config, name):
-    '''
-    refresh target variables in sub config
-    :event is get by callback
-    :param name:
-    :return:
-    '''
     value = text_dict[name].get()
     sub_config[name] = value
     sub_config.refresh(name)

@@ -4,15 +4,12 @@
 # add path:
 import sys
 sys.path.append('/mnt/storage/codes/Harvey')
-
-import RL as rl
 from RL.configure import configure
-# utils
-from collections import OrderedDict
 
-class env_config(configure.sub_config):
+
+class EnvConfig(configure.SubConfig):
     def __init__(self, name):
-        configure.sub_config.__init__(self, name)
+        configure.SubConfig.__init__(self, name)
         # core config for mujoco
         self.get_knowledge()
         self.get_data()
@@ -83,4 +80,4 @@ class env_config(configure.sub_config):
 
 
 if __name__ == '__main__':
-    env_config('environment')
+    EnvConfig('environment')

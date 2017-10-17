@@ -1,6 +1,10 @@
 <component name="ProjectDictionaryState">
   <dictionary name="saturn">
     <words>
+      <w>infos</w>
+      <w>inits</w>
+      <w>logvar</w>
+      <w>logvars</w>
       <w>mujoco</w>
       <w>myconfig</w>
       <w>mycontainer</w>
@@ -10,9 +14,13 @@
       <w>posion</w>
       <w>qpos</w>
       <w>qvel</w>
+      <w>reweight</w>
       <w>scaler</w>
+      <w>tanh</w>
       <w>tensorboard</w>
       <w>tensorflow</w>
+      <w>updata</w>
+      <w>valfunc</w>
     </words>
   </dictionary>
 </component>

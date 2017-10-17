@@ -1,5 +1,6 @@
 import collections
 
+
 def write_dict():
     saver_dict = collections.OrderedDict()
     base_list = ['ball', 'arm']

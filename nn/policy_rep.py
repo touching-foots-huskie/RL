@@ -8,15 +8,10 @@ import RL.nn.write_dict as write_dict
 import RL.nn.core_net as br 
 
 
-class policy_rep(object):
+class PolicyRep(object):
     def __init__(self, policy_config):
-        '''
-        policy_config is the config: policy config will not change in process
-        Name_list: 
-        Dim_list: (state, addition_state_0...)
-        '''
         # index:
-        if policy_config['update_name'] != None:
+        if policy_config['update_name'] is not None:
             self.index = (policy_config['environment'].split(',')).index(policy_config['update_name'])
         else:
             self.index = 0
@@ -62,20 +57,21 @@ class policy_rep(object):
                 if name in self.policy_config.data['a_names'].split(',')[:i]:
                     scope.reuse_variables()
                 if i == 0:
-                    cs = tf.concat([self.s[0], self.s[1]], axis = -1)
+                    cs = tf.concat([self.s[0], self.s[1]], axis=-1)
                     mean, sigma, sigma_init = br.actor_net(cs, self.action_dim)
                 else:
-                    cs = tf.concat([self.s[0], self.s[i], mean], axis = -1)
+                    cs = tf.concat([self.s[0], self.s[i], mean], axis=-1)
                     mean, sigma, sigma_init = br.actor_net(cs, self.action_dim)
 
                 self.sigma_inits[name] = sigma_init
                 self.means[name] = mean
                 self.sigmas[name] = sigma
                 self.mean = mean + self.mean
-                self.param_dict['{}_action'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,'{}/{}'.format(name,'actor'))
+                self.param_dict['{}_action'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, '{}/{}'
+                                                                              .format(name, 'actor'))
                 self.saver_dict['{}_action'.format(name)] = tf.train.Saver(self.param_dict['{}_action'.format(name)])
         # choose sigma:
-        if self.update_name != None:
+        if self.update_name is not None:
             self.sigma = self.sigmas[self.update_name]
                 
         if self.policy_config.data['c_activate']:
@@ -87,34 +83,37 @@ class policy_rep(object):
                     if name in self.policy_config.data['c_names'].split(',')[:i]:
                         scope.reuse_variables()
                     if i == 0:
-                        cs = tf.concat([self.s[0], self.s[1]], axis = -1)
+                        cs = tf.concat([self.s[0], self.s[1]], axis=-1)
                         value = br.critic_net(cs)
                     else:
                         # we don't need to concern with mean, which is too detail to converge
-                        cs = tf.concat([self.s[0], self.s[i]], axis = -1)
+                        cs = tf.concat([self.s[0], self.s[i]], axis=-1)
                         value = br.critic_net(cs)
 
                     self.values[name] = value
                     self.value = value + self.value
-                    self.param_dict['{}_value'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,'{}/{}'.format(name,'critic'))
+                    self.param_dict['{}_value'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,
+                                                                                 '{}/{}'.format(name, 'critic'))
                     self.saver_dict['{}_value'.format(name)] = tf.train.Saver(self.param_dict['{}_value'.format(name)])
                  
         if self.policy_config.data['t_activate']:
             # activation is the average reward without policy
             # use activation and train activation is different
-            # activation = pre_vlaue - {no policy reward} # means the importance of target policy
+            # activation = pre_value - {no policy reward} # means the importance of target policy
             self.activations = {}
             for i, name in enumerate(self.policy_config.data['t_names'].split(',')):
                 with tf.variable_scope(name) as scope:
                     if name in self.policy_config.data['t_names'].split(',')[:i]:
                         scope.reuse_variables()
                     # activation is invariant to mean before
-                    cs = tf.concat([self.s[0], self.s[i]], axis = -1)
+                    cs = tf.concat([self.s[0], self.s[i]], axis=-1)
                     activation = br.activate_net(cs)
 
                     self.activations[name] = activation
-                    self.param_dict['{}_activation'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,'{}/{}'.format(name,'activate'))
-                    self.saver_dict['{}_activation'.format(name)] = tf.train.Saver(self.param_dict['{}_value'.format(name)])
+                    self.param_dict['{}_activation'.format(name)] = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES,
+                                                                                      '{}/{}'.format(name, 'activate'))
+                    self.saver_dict['{}_activation'.format(name)] = tf.train.Saver(self.param_dict['{}_value'
+                                                                                   .format(name)])
         
             # bell_man structure:
             if self.policy_config.data['bell_man']:
@@ -126,10 +125,7 @@ class policy_rep(object):
                 self.init_dicts[name] = tf.variables_initializer(variables)
 
     def bell_man_weights(self):
-        '''
-        Reweight the action according to bellman combination
-        '''
-        self.ks = {}
+        self.ks = dict()
         sum_ks = 0.0
         for name in self.policy_config.data['t_names'].split(','):
             self.ks[name] = tf.maximum(self.activations[name], 0.0)
@@ -147,16 +143,19 @@ class policy_rep(object):
         self.policy_config.data['param_save'] = {}
         # a:
         for i, value in enumerate(self.policy_config['a_param_save'].split(',')):
-            self.policy_config.data['param_save']['{}_action'.format(self.policy_config['a_names'].split(',')[i])] = True if value == 'True' else False
+            self.policy_config.data['param_save']['{}_action'.format(self.policy_config['a_names'].split(',')[i])] = \
+                True if value == 'True' else False
         # c
         if self.policy_config.data['c_activate']:
             for i, value in enumerate(self.policy_config['c_param_save'].split(',')):
-                self.policy_config.data['param_save']['{}_value'.format(self.policy_config['c_names'].split(',')[i])] = True if value == 'True' else False
+                self.policy_config.data['param_save']['{}_value'.format(self.policy_config['c_names'].split(',')[i])] \
+                    = True if value == 'True' else False
 
         # t
         if self.policy_config.data['t_activate']:
             for i, value in enumerate(self.policy_config['t_param_save'].split(',')):
-                self.policy_config.data['param_save']['{}_activation'.format(self.policy_config['t_names'].split(',')[i])] = True if value == 'True' else False
+                self.policy_config.data['param_save']['{}_activation'.format(self.policy_config['t_names'].split(',')[i]
+                                                                             )] = True if value == 'True' else False
 
         for name in self.param_dict.keys():
             if self.policy_config.data['param_save'][name]:
@@ -189,14 +188,11 @@ class policy_rep(object):
     def restart_part(self, name):
         self.sess.run(self.init_dicts[name])         
 
-    def refresh_sigma(self, name):
-        self.sess.run(self.sigma_inits[name])
+    def refresh_sigma(self):
+        # we refresh update_name
+        self.sess.run(self.sigma_inits[self.policy_config['update_name']])
      
     def get_feed_dict(self, data):
-        '''
-        Change state dict into feed of state
-        feed_config = [typ: clan/tradition, cal_reward]
-        '''
         feed_dict = {}
         for name, d in data.items():
             if name in self.map_dict.keys():
@@ -204,33 +200,22 @@ class policy_rep(object):
         return feed_dict
 
     def predict_mean(self, data, name=None):
-        '''
-        Args: states
-        '''
         feed_dict = self.get_feed_dict(data)
-        if name != None:
+        if name is not None:
             return self.sess.run(self.means[name], feed_dict)
         else:
             return self.sess.run(self.mean, feed_dict)
 
     def predict_sigma(self, data, name=None):
-        '''
-        Args: states
-        '''
         feed_dict = self.get_feed_dict(data)
-        if name != None:
+        if name is not None:
             return self.sess.run(self.sigmas[name], feed_dict)
         else:
             return self.sess.run(self.sigma, feed_dict)
 
     def predict_value(self, data, name=None):
-        '''
-        Args: states
-        '''
         feed_dict = self.get_feed_dict(data)
-        if name != None:
+        if name is not None:
             return self.sess.run(self.values[name], feed_dict)
         else:
             return self.sess.run(self.value, feed_dict)
-
-

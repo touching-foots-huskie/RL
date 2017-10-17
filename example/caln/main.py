@@ -5,17 +5,18 @@ sys.path.append('/mnt/storage/codes/Harvey')
 
 import RL as rl
 import tensorflow as tf
-from RL.example.caln.policy_config import policy_config
-from RL.example.caln.env_config import env_config
+from RL.example.caln.policy_config import PolicyConfig
+from RL.example.caln.env_config import EnvConfig
 # environment:
 from RL.env.mujoco.env import env
-from RL.env.mujoco.protocol import container
+from RL.env.mujoco.protocol import Container
 # policy
-from RL.nn.ppo import policy_rep
+from RL.nn.ppo import PolicyRep
 from RL.train.judge import judge_wrapper
 from RL.train.update import update_wrapper
 from RL.train.evaluate import eval_wrapper
 from RL.train.simulate import *
+from RL.train.watch_dog import WatchDog
 import RL.train.optim as optim
 from collections import deque
 
@@ -29,18 +30,19 @@ def update_policy(results, myconfig, mypolicy):
 
 def main():
     # get config
-    whole_config = rl.configure.configure.config()
-    my_policy_config = policy_config('policy')
-    my_env_config = env_config('environment')
+    watch_dog = WatchDog()
+    whole_config = rl.configure.configure.Config()
+    my_policy_config = PolicyConfig('policy')
+    my_env_config = EnvConfig('environment')
     whole_config.add(my_env_config)
     whole_config.add(my_policy_config)
     # visualization
     rl.configure.visual_tool.major_pane(whole_config)
     # get env:
     myenv = env(whole_config['environment'])
-    mycontainer = container(whole_config['attribute_num'])
+    mycontainer = Container(whole_config['attribute_num'])
     # get network:
-    mypolicy = policy_rep(whole_config)
+    mypolicy = PolicyRep(whole_config)
     # init:
     mypolicy.sess.run(tf.global_variables_initializer())
     # flag:
@@ -55,13 +57,23 @@ def main():
     # restore:
     mypolicy.restore()
     while not flag:
-        results, all_passed = run_policy(whole_config, myenv, mycontainer, mypolicy)
-        if eval_func(results, whole_config, long_term_performance) or all_passed:
+        results = run_policy(whole_config, myenv, mycontainer, mypolicy)
+        eval_flag, average_performance = eval_func(results, whole_config, long_term_performance)
+        if eval_flag or whole_config['all_passed'] or whole_config['all_zero']:
             update_func(whole_config)
             long_term_performance = deque([0.0] * whole_config['long_term_batch'],
                                           maxlen=whole_config['long_term_batch'])
+            watch_dog.refresh()
         # update param_meter:
-        update_policy(results, whole_config, mypolicy)
+        else:
+            update_policy(results, whole_config, mypolicy)
+
+        # watch dog start:
+        if not watch_dog.check(average_performance):
+            # if check false:
+            mypolicy.refresh_sigma()
+            whole_config['reset_from_pool'] = False
+            print('watch dog start, thread restart')
 
         whole_config['global_step'] += 1
         flag = judge_func(whole_config)

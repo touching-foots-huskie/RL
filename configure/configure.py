@@ -5,7 +5,7 @@ from collections import OrderedDict
 import json
 
 
-class config:
+class Config:
     def __init__(self):
         self.data = OrderedDict()
         self.sub_config_dict = OrderedDict()
@@ -30,7 +30,7 @@ class config:
             json.dump(self.data, f)
 
 
-class sub_config:
+class SubConfig:
     def __init__(self, name):
         self.name = name
         self.data = OrderedDict()
@@ -63,12 +63,12 @@ class sub_config:
 
 
 if __name__ == '__main__':
-    whole_config = config()
-    env = sub_config('environment')
+    whole_config = Config()
+    env = SubConfig('environment')
     env['env_type'] = 'mujoco'
     env['env_dim'] = 4
 
-    policy = sub_config('policy')
+    policy = SubConfig('policy')
     policy['policy_type'] = 'ppo'
 
     whole_config.add(env)

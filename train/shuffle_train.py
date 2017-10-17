@@ -2,12 +2,6 @@
 # Email: chnme40cs@gmail.com
 # shuffle train is used to store the decorator for shuffle train:
 # $File basic_train.py
-# $Usage this file is writting batch_training method as warrper:
-'''
-Batch training method include two args: epochs, and batch_num
-'''
-import numpy as np
-from functools import partial
 from sklearn.utils import shuffle
 
 

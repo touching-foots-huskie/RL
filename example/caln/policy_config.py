@@ -3,16 +3,13 @@
 # policy configures
 import sys
 sys.path.append('/mnt/storage/codes/Harvey')
-
-import RL as rl
 import numpy as np
 from RL.configure import configure
-from collections import OrderedDict
 
 
-class policy_config(configure.sub_config):
+class PolicyConfig(configure.SubConfig):
     def __init__(self, name):
-        configure.sub_config.__init__(self, name)
+        configure.SubConfig.__init__(self, name)
         # core config for mujoco
         self.get_knowledge()
         self.get_data()
@@ -35,8 +32,10 @@ class policy_config(configure.sub_config):
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
         self.data['total_episodes'] = 1000
         self.data['random_level'] = 0.1
-        self.data['threshold_low'] = 0.05
-        self.data['threshold_high'] = 0.9
+        self.data['threshold_low'] = 0.1  # lowest value
+        self.data['threshold_high'] = 0.8  # highest value
+        self.data['threshold_low_high'] = 0.3  # lowest value upper bound
+        self.data['threshold_high_low'] = 0.6  # highest value lower bound
         self.data['lambda'] = 1.1
         self.data['gamma'] = 0.9
         self.data['lam'] = 0.9
@@ -247,6 +246,9 @@ class policy_config(configure.sub_config):
         # rewrite push method for some data. which is needless to show
         self.data['global_step'] = 0
         self.data['threshold'] = 10.0
+        # change actual threshold:
+        self.data['actual_threshold_low'] = self.data['threshold_low']  # lowest value
+        self.data['actual_threshold_high'] = self.data['threshold_high']  # highest value
         # update list: which part will be update?
         if 'update_name' in self.data.keys():
             update_list = []
@@ -268,4 +270,4 @@ class policy_config(configure.sub_config):
 
 
 if __name__ == '__main__':
-    policy_config('policy')
+    PolicyConfig('policy')
