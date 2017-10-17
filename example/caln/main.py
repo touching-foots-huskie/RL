@@ -76,9 +76,13 @@ def main():
                 # if check false:
                 if whole_config['random_level'] == 0.1:
                     # which means first start:
-                    mypolicy.restart_part()
+                    # mypolicy.restart_part()
+                    mypolicy.refresh_sigma()
                 else:
                     mypolicy.refresh_sigma()
+                # refresh all:
+                long_term_performance = deque([0.0] * whole_config['long_term_batch'],
+                                              maxlen=whole_config['long_term_batch'])
                 whole_config['reset_from_pool'] = False
                 print('watch dog start, thread restart')
 

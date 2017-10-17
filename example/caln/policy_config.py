@@ -30,7 +30,7 @@ class PolicyConfig(configure.SubConfig):
         self.data['batch_num'] = 256
         self.data['batch_epochs'] = 20  # more smooth and quick
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
-        self.data['total_episodes'] = 1000
+        self.data['total_episodes'] = 10000
         self.data['random_level'] = 0.1
         self.data['threshold_low'] = 0.1  # lowest value
         self.data['threshold_high'] = 0.8  # highest value
@@ -100,7 +100,7 @@ class PolicyConfig(configure.SubConfig):
                 self.data['update_name'] = self.upper_data['base']
                 self.data['bell_man'] = False
                 # False?
-                self.data['partial_restart'] = False
+                self.data['partial_restart'] = True
 
             elif self.data['mode'] == 'attribute_train':
                 # attribute train only refers to train two layer caln
@@ -130,9 +130,9 @@ class PolicyConfig(configure.SubConfig):
                 self.data['update_name'] = self.upper_data['attribute_0']
                 self.data['bell_man'] = False
                 # False?
-                self.data['partial_restart'] = False
+                self.data['partial_restart'] = True
                 # suppress_ratio:
-                self.data['suppress_ratio'] = 0.1
+                self.data['suppress_ratio'] = 1.0
                 self.data['max_iter_num'] *= 2.0
 
             elif self.data['mode'] == 'weight_train':
@@ -167,7 +167,7 @@ class PolicyConfig(configure.SubConfig):
                 self.data['update_name'] = self.upper_data['attribute_0']
                 self.data['bell_man'] = False
                 # False?
-                self.data['partial_restart'] = False
+                self.data['partial_restart'] = True
                 self.data['suppress_ratio'] = 0.1
 
                 # data:
@@ -215,7 +215,6 @@ class PolicyConfig(configure.SubConfig):
                     self.data['update_name'] = None
                     self.data['bell_man'] = False
 
-                # False?
                 self.data['partial_restart'] = False
                 self.data['suppress_ratio'] = 0
                 # double max_iter:
@@ -255,11 +254,15 @@ class PolicyConfig(configure.SubConfig):
         self.data['global_step'] = 0
         self.data['threshold'] = 10.0
         # change actual threshold:
+        self.data['threshold_low'] = float(self.data['threshold_low'])
+        self.data['threshold_high'] = float(self.data['threshold_high'])
+
         self.data['actual_threshold_low'] = self.data['threshold_low']  # lowest value
         self.data['actual_threshold_high'] = self.data['threshold_high']  # highest value
         # data type change:
         self.data['random_level'] = float(self.data['random_level'])
         self.data['max_iter_num'] = float(self.data['max_iter_num'])
+        self.data['reward_threshold'] = float(self.data['reward_threshold'])
 
         # update list: which part will be update?
         if 'update_name' in self.data.keys():
