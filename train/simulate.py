@@ -28,7 +28,9 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
     gamma = float(myconfig['gamma'])
     lam = float(myconfig['lam'])
     V.add_disc_sum_rew(mycontainer, gamma)
-    V.add_gae(mycontainer, gamma, lam)
+    if myconfig['mode'] != 'test':
+        # evaluate when it is not test type
+        V.add_gae(mycontainer, gamma, lam)
     # chose add sum_rewards, and, dis_sum_rewards:
     if myconfig['eval_string'] == 'sum':
         mycontainer['eval_value'] = [np.sum(mycontainer['rewards'])]
@@ -37,6 +39,7 @@ def run_episode(myconfig, myenv, mycontainer, mypolicy):
     else:
         print('No such eval_string')
         raise KeyError
+
     return mycontainer.pop()
 
 
@@ -91,16 +94,19 @@ def run_policy(myconfig, myenv, mycontainer, mypolicy):
         result_list.append(result)
     # filter when reset from random:
     # setting all_passed and all_zero
-    myconfig['all_passed'] = False
-    myconfig['all_zero'] = False
-    if not myconfig['reset_from_pool']:
-        # the only reason to filter is to find good starts:
-        good_starts = performance_filter(result_list, myconfig, myenv, mycontainer, mypolicy)
+    # filter when it is not test mode:
+    if myconfig['mode'] != 'test':
+        myconfig['all_passed'] = False
+        myconfig['all_zero'] = False
+        if not myconfig['reset_from_pool']:
+            # the only reason to filter is to find good starts:
+            good_starts = performance_filter(result_list, myconfig, myenv, mycontainer, mypolicy)
 
-        if len(good_starts) != 0:
-            myenv.set_start_pool(good_starts)
+            if len(good_starts) != 0:
+                myenv.set_start_pool(good_starts)
             myconfig['reset_from_pool'] = True
 
+    # merge for all mode
     for result in result_list:
         # we don't use start_pos more
         for key, value in result.items():

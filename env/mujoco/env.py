@@ -495,18 +495,18 @@ class env:
         img = self.get_picture()
         cv2.imwrite('test.jpg', img)
 
-    def get_video(self, name, state_list):
-        # get video from an action list:
+    def get_video(self, name, state_list, target_list, add_state_list):
+        # get video from an state list:
         # record state is more precise
         fourcc = cv2.VideoWriter_fourcc(*"MJPG")
         video = cv2.VideoWriter('./{}.avi'.format(name), fourcc, 20, (image_size, image_size), True)
-        for state in state_list:
-            self.action(state)
+        for (state, target, add_state) in zip(state_list, target_list, add_state_list):
+            self.inverse_set(state, target, add_state)
             picture = self.get_picture()
             video.write(picture)
         video.release()
 
-    #utils
+    # utils
     def merge_state(self, state_list, target_state_list, add_state_list):
         ''' Change the state_list into pos '''
         num = np.array(state_list).shape[0]
@@ -528,6 +528,7 @@ class env:
             target_state = np.array([]).reshape([num,0])
         new_state = np.concatenate([state, target_state, add_state], axis = -1)
         return new_state
+
 
 if __name__ == '__main__':
     # task test

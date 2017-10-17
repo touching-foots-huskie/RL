@@ -131,6 +131,9 @@ class PolicyConfig(configure.SubConfig):
                 self.data['bell_man'] = False
                 # False?
                 self.data['partial_restart'] = False
+                # suppress_ratio:
+                self.data['suppress_ratio'] = 0.1
+                self.data['max_iter_num'] *= 2.0
 
             elif self.data['mode'] == 'weight_train':
                 # attribute train only refers to train two layer caln
@@ -165,6 +168,7 @@ class PolicyConfig(configure.SubConfig):
                 self.data['bell_man'] = False
                 # False?
                 self.data['partial_restart'] = False
+                self.data['suppress_ratio'] = 0.1
 
                 # data:
                 self.data['random_level'] = 10.0
@@ -213,6 +217,10 @@ class PolicyConfig(configure.SubConfig):
 
                 # False?
                 self.data['partial_restart'] = False
+                self.data['suppress_ratio'] = 0
+                # double max_iter:
+                self.data['max_iter_num'] *= 2.0
+
         elif name == 'update_string':
             # if mode is weight_train, then the string can not be changed
             if self.data['mode'] == 'weight_train':

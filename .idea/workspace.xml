@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e83852b0-f5ef-4ef3-ba3b-3bfbedc07eab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.data-00000-of-00001" afterPath="$PROJECT_DIR$/example/caln/train_log/model/12.data-00000-of-00001" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.index" afterPath="$PROJECT_DIR$/example/caln/train_log/model/12.index" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.meta" afterPath="$PROJECT_DIR$/example/caln/train_log/model/12.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.data-00000-of-00001" afterPath="$PROJECT_DIR$/example/caln/train_log/model/13.data-00000-of-00001" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.index" afterPath="$PROJECT_DIR$/example/caln/train_log/model/13.index" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.meta" afterPath="$PROJECT_DIR$/example/caln/train_log/model/13.meta" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env/mujoco/env.py" afterPath="$PROJECT_DIR$/env/mujoco/env.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/main.py" afterPath="$PROJECT_DIR$/example/caln/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/caln/policy_config.py" afterPath="$PROJECT_DIR$/example/caln/policy_config.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/policy_rep.py" afterPath="$PROJECT_DIR$/nn/policy_rep.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nn/ppo.py" afterPath="$PROJECT_DIR$/nn/ppo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train/simulate.py" afterPath="$PROJECT_DIR$/train/simulate.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,31 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="policy_config.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="policy_config.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/caln/policy_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="154" column="38" lean-forward="true" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/example/caln/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1466">
-              <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/update.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+            <state relative-caret-position="-613">
+              <caret line="135" column="34" lean-forward="false" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -54,8 +41,8 @@
       <file leaf-file-name="policy_rep.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nn/policy_rep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+            <state relative-caret-position="148">
+              <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
               <folding>
                 <element signature="e#247#270#0" expanded="true" />
               </folding>
@@ -75,14 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saver_dict</find>
-      <find>a_names</find>
-      <find>ball</find>
-      <find>save</find>
-      <find>lr_cs</find>
-      <find>float</find>
-      <find>lr</find>
-      <find>reset_from_pool</find>
       <find>filter</find>
       <find>\'</find>
       <find>average_perfor</find>
@@ -96,15 +75,23 @@
       <find>supperess_ratio</find>
       <find>leanrning</find>
       <find>policy_rep</find>
-      <find>run_policy</find>
       <find>push</find>
       <find>update_name</find>
       <find>'reset_from_pool'</find>
-      <find>'max_iter_num'</find>
       <find>lambda</find>
       <find>init_dicts</find>
       <find>trainable</find>
+      <find>'max_iter_num'</find>
       <find>param_dict</find>
+      <find>training_mark</find>
+      <find>batch_num</find>
+      <find>.split(',')[self.index]</find>
+      <find>self.sigma</find>
+      <find>attribute</find>
+      <find>suppres</find>
+      <find>run_policy</find>
+      <find>safety</find>
+      <find>self.data['max_iter_num']</find>
     </findStrings>
     <replaceStrings>
       <replace>ttk</replace>
@@ -147,7 +134,6 @@
         <option value="$PROJECT_DIR$/env/__init__.py" />
         <option value="$PROJECT_DIR$/train/data_process.py" />
         <option value="$PROJECT_DIR$/utils/value_tools.py" />
-        <option value="/mnt/storage/codes/Harvey/RL/nn/ppo.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="/mnt/storage/codes/Harvey/RL/utils/value_tools.py" />
         <option value="/mnt/storage/codes/Harvey/RL/nn/write_dict.py" />
@@ -156,12 +142,9 @@
         <option value="$PROJECT_DIR$/train/judge.py" />
         <option value="$PROJECT_DIR$/train/filter.py" />
         <option value="/mnt/storage/codes/Harvey/RL/train/shuffle_train.py" />
-        <option value="/mnt/storage/codes/Harvey/RL/env/mujoco/env.py" />
         <option value="$PROJECT_DIR$/train/__init__.py" />
         <option value="$PROJECT_DIR$/train/performance_filter.py" />
         <option value="/mnt/storage/codes/Harvey/RL/train/performance_filter.py" />
-        <option value="/mnt/storage/codes/Harvey/RL/train/simulate.py" />
-        <option value="$PROJECT_DIR$/train/update.py" />
         <option value="$PROJECT_DIR$/configure/configure.py" />
         <option value="$PROJECT_DIR$/configure/visual_tool.py" />
         <option value="/mnt/storage/codes/Harvey/RL/example/caln/policy_config.py" />
@@ -173,11 +156,15 @@
         <option value="$PROJECT_DIR$/env/mujoco/protocol.py" />
         <option value="$PROJECT_DIR$/train/watch_dog.py" />
         <option value="$PROJECT_DIR$/train/evaluate.py" />
-        <option value="$PROJECT_DIR$/env/mujoco/env.py" />
-        <option value="$PROJECT_DIR$/example/caln/policy_config.py" />
+        <option value="$PROJECT_DIR$/train/update.py" />
+        <option value="$PROJECT_DIR$/nn/policy_rep.py" />
+        <option value="/mnt/storage/codes/Harvey/RL/nn/ppo.py" />
+        <option value="/mnt/storage/codes/Harvey/RL/train/simulate.py" />
+        <option value="/mnt/storage/codes/Harvey/RL/env/mujoco/env.py" />
         <option value="$PROJECT_DIR$/train/simulate.py" />
         <option value="$PROJECT_DIR$/example/caln/main.py" />
-        <option value="$PROJECT_DIR$/nn/policy_rep.py" />
+        <option value="$PROJECT_DIR$/env/mujoco/env.py" />
+        <option value="$PROJECT_DIR$/example/caln/policy_config.py" />
       </list>
     </option>
   </component>
@@ -472,7 +459,21 @@
       <option name="project" value="LOCAL" />
       <updated>1508212942889</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add restart when bad start">
+      <created>1508215766009</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1508215766009</updated>
+    </task>
+    <task id="LOCAL-00013" summary="balance some parameters">
+      <created>1508217333196</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1508217333196</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -486,7 +487,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="31" width="1286" height="723" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22330096" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288364" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -494,11 +494,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38279933" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6020236" sideWeight="0.49514562" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4401349" sideWeight="0.49514562" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35581788" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37436762" sideWeight="0.49676377" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3487055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -516,9 +516,9 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38279933" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21753794" sideWeight="0.49514562" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5801012" sideWeight="0.49514562" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22330096" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22330096" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32715008" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -537,7 +537,9 @@
     <MESSAGE value="add update" />
     <MESSAGE value="add value tools" />
     <MESSAGE value="change format and add watch dog" />
-    <option name="LAST_COMMIT_MESSAGE" value="change format and add watch dog" />
+    <MESSAGE value="add restart when bad start" />
+    <MESSAGE value="balance some parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="balance some parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -551,7 +553,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="102" />
+      <option name="time" value="108" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -604,13 +606,6 @@
         <state relative-caret-position="126">
           <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/storage/codes/Harvey/RL/nn/ppo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -683,14 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/storage/codes/Harvey/RL/env/mujoco/env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3319">
-          <caret line="489" column="11" lean-forward="true" selection-start-line="489" selection-start-column="11" selection-end-line="489" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/performance_filter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -739,14 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///mnt/storage/codes/Harvey/RL/train/simulate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="137" column="78" lean-forward="false" selection-start-line="137" selection-start-column="78" selection-end-line="137" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configure/visual_tool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2268">
@@ -762,24 +741,6 @@
         <state relative-caret-position="18">
           <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configure/configure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nn/core_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding>
-            <element signature="e#45#68#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,28 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nn/ppo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1053">
-          <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
-          <folding>
-            <element signature="e#97#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/caln/env_config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/env/mujoco/protocol.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -843,22 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/env/mujoco/env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1470">
-          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/watch_dog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-69">
@@ -867,44 +794,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/simulate.py">
+    <entry file="file://$PROJECT_DIR$/train/update.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="140" column="35" lean-forward="true" selection-start-line="140" selection-start-column="35" selection-end-line="140" selection-end-column="35" />
+        <state relative-caret-position="609">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/caln/policy_config.py">
+    <entry file="file://$PROJECT_DIR$/nn/core_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="154" column="38" lean-forward="true" selection-start-line="154" selection-start-column="26" selection-end-line="154" selection-end-column="38" />
+        <state relative-caret-position="349">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nn/policy_rep.py">
+    <entry file="file:///mnt/storage/codes/Harvey/RL/nn/ppo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+        <state relative-caret-position="-42">
+          <caret line="32" column="128" lean-forward="false" selection-start-line="32" selection-start-column="128" selection-end-line="32" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/storage/codes/Harvey/RL/train/simulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="83" column="8" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn/ppo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="13" column="73" lean-forward="false" selection-start-line="13" selection-start-column="63" selection-end-line="13" selection-end-column="73" />
           <folding>
-            <element signature="e#247#270#0" expanded="true" />
+            <element signature="e#97#120#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/update.py">
+    <entry file="file:///mnt/storage/codes/Harvey/RL/env/mujoco/env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        <state relative-caret-position="199">
+          <caret line="506" column="23" lean-forward="true" selection-start-line="506" selection-start-column="23" selection-end-line="506" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/mujoco/protocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/simulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configure/configure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/caln/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1466">
-          <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+        <state relative-caret-position="223">
+          <caret line="96" column="31" lean-forward="true" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/mujoco/env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="118" column="51" lean-forward="true" selection-start-line="118" selection-start-column="51" selection-end-line="118" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nn/policy_rep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+          <folding>
+            <element signature="e#247#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/caln/policy_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-613">
+          <caret line="135" column="34" lean-forward="false" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
           <folding />
         </state>
       </provider>

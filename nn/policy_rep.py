@@ -51,6 +51,7 @@ class PolicyRep(object):
         self.sigma_inits = {}
         self.saver_dict = {}
         self.param_dict = {}
+        # a net setup:
         for i, name in enumerate(self.policy_config.data['a_names'].split(',')):
             with tf.variable_scope(name) as scope:
                 # if reuse attribute
@@ -61,7 +62,7 @@ class PolicyRep(object):
                     mean, sigma, sigma_init = br.actor_net(cs, self.action_dim)
                 else:
                     cs = tf.concat([self.s[0], self.s[i], mean], axis=-1)
-                    mean, sigma, sigma_init = br.actor_net(cs, self.action_dim)
+                    mean, sigma, sigma_init = br.actor_net(cs, self.action_dim, self.policy_config['suppress_ratio'])
 
                 self.sigma_inits[name] = sigma_init
                 self.means[name] = mean
@@ -88,7 +89,7 @@ class PolicyRep(object):
                     else:
                         # we don't need to concern with mean, which is too detail to converge
                         cs = tf.concat([self.s[0], self.s[i]], axis=-1)
-                        value = br.critic_net(cs)
+                        value = br.critic_net(cs, self.policy_config['suppress_ratio'])
 
                     self.values[name] = value
                     self.value = value + self.value

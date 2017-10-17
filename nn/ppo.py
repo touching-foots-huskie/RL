@@ -17,7 +17,7 @@ class PolicyRep(pr.PolicyRep):
         # Loss structures:
         # c_loss
         if self.policy_config.data['c_activate'] and \
-                (self.policy_config.data['c_trainable'].split(',')[self.index] == 'True'):
+                (eval(self.policy_config.data['c_trainable'].split(',')[self.index])):
             self.Adam_c = tf.train.AdamOptimizer(float(self.policy_config.data['lr_c']))
             with tf.name_scope('c_loss'):
                 self.val_ph = tf.placeholder(tf.float32, (None, 1), 'val_valfunc')
@@ -30,7 +30,7 @@ class PolicyRep(pr.PolicyRep):
                 tf.summary.scalar('c_loss', self.c_loss)
 
         # t_loss
-        if self.policy_config.data['t_activate'] and self.policy_config.data['t_trainable'].split(',')[self.index-1]:
+        if self.policy_config.data['t_activate'] and eval(self.policy_config.data['t_trainable'].split(',')[max(self.index-1, 0)]):
             # raw_A is used to update t
             # raw_A means with out compensation:
             raw_norm = tf.contrib.distributions.Normal(self.means[self.base_name], self.sigma, name='raw_normal')
@@ -48,7 +48,7 @@ class PolicyRep(pr.PolicyRep):
                     zip(self.t_grads, self.param_dict['{}_activation'.format(self.update_name)]))
                 tf.summary.scalar('t_loss', self.t_loss)
         # a_loss
-        if self.policy_config.data['a_trainable'].split(',')[self.index]:
+        if eval(self.policy_config.data['a_trainable'].split(',')[self.index]):
             self.Adam_a = tf.train.AdamOptimizer(float(self.policy_config.data['lr_a']))
             with tf.name_scope('a_loss'):
                 with tf.name_scope('old_normal'):

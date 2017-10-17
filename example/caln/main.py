@@ -19,6 +19,7 @@ from RL.train.simulate import *
 from RL.train.watch_dog import WatchDog
 import RL.train.optim as optim
 from collections import deque
+import numpy as np
 
 
 def update_policy(results, myconfig, mypolicy):
@@ -56,34 +57,47 @@ def main():
 
     # restore:
     mypolicy.restore()
-    while not flag:
-        results = run_policy(whole_config, myenv, mycontainer, mypolicy)
-        eval_flag, average_performance = eval_func(results, whole_config, long_term_performance)
-        if eval_flag or whole_config['all_passed'] or whole_config['all_zero']:
-            update_func(whole_config)
-            long_term_performance = deque([0.0] * whole_config['long_term_batch'],
-                                          maxlen=whole_config['long_term_batch'])
-            watch_dog.refresh()
-        # update param_meter:
-        else:
-            update_policy(results, whole_config, mypolicy)
-
-        # watch dog start:
-        if not watch_dog.check(average_performance):
-            # if check false:
-            if whole_config['random_level'] == 0.1:
-                # which means first start:
-                mypolicy.restart_part()
+    if whole_config['mode'] != 'test':
+        # train mode
+        while not flag:
+            results = run_policy(whole_config, myenv, mycontainer, mypolicy)
+            eval_flag, average_performance = eval_func(results, whole_config, long_term_performance)
+            if eval_flag or whole_config['all_passed'] or whole_config['all_zero']:
+                update_func(whole_config)
+                long_term_performance = deque([0.0] * whole_config['long_term_batch'],
+                                              maxlen=whole_config['long_term_batch'])
+                watch_dog.refresh()
+            # update param_meter:
             else:
-                mypolicy.refresh_sigma()
-            whole_config['reset_from_pool'] = False
-            print('watch dog start, thread restart')
+                update_policy(results, whole_config, mypolicy)
 
-        whole_config['global_step'] += 1
-        flag = judge_func(whole_config)
+            # watch dog start:
+            if not watch_dog.check(average_performance):
+                # if check false:
+                if whole_config['random_level'] == 0.1:
+                    # which means first start:
+                    mypolicy.restart_part()
+                else:
+                    mypolicy.refresh_sigma()
+                whole_config['reset_from_pool'] = False
+                print('watch dog start, thread restart')
 
-    # save:
-    mypolicy.save()
+            whole_config['global_step'] += 1
+            flag = judge_func(whole_config)
+
+        # save:
+        mypolicy.save()
+    else:
+        results = run_policy(whole_config, myenv, mycontainer, mypolicy)
+        # make video: multi-attribute have not write.
+        if whole_config['attribute_num']:
+            add_state_list = [results['addition_{}'.format(i)] for i in range(whole_config['attribute_num'])]
+            add_state_list = np.stack(add_state_list).transpose([1, 0, 2])
+        else:
+            add_state_list = []
+        myenv.get_video('test', results['states'], results['targets'], add_state_list)
+        # print performance:
+        print('the performance is {}'.format(np.mean(results['eval_value'])))
     print('Process end!')
 
 
