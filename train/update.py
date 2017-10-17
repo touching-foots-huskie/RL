@@ -32,7 +32,7 @@ def posion_update(config):
     # random_level and max_iter change:
     if config['counter'] >= int(config['epoch_per_level']):
         config['random_level'] *= config['lambda']
-        config['max_iter_num'] += 0.1
+        config['max_iter_num'] += 0.4
         config['counter'] = 0
     # dynamic change for threshold_low and threshold_high:
     if config['all_passed']:

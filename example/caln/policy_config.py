@@ -28,7 +28,7 @@ class PolicyConfig(configure.SubConfig):
         self.data['epochs'] = 20
         self.data['max_iter_num'] = 10
         self.data['batch_num'] = 256
-        self.data['batch_epochs'] = 40
+        self.data['batch_epochs'] = 20  # more smooth and quick
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
         self.data['total_episodes'] = 1000
         self.data['random_level'] = 0.1
@@ -175,7 +175,7 @@ class PolicyConfig(configure.SubConfig):
                 # attribute train only refers to train two layer caln
                 name_list = ''
                 i = 0
-                while ('attribute_{}'.format(i) in self.upper_data.keys()):
+                while 'attribute_{}'.format(i) in self.upper_data.keys():
                     name_list += ',{}'.format(self.upper_data['attribute_{}'.format(i)])
                     i += 1
 
@@ -249,10 +249,14 @@ class PolicyConfig(configure.SubConfig):
         # change actual threshold:
         self.data['actual_threshold_low'] = self.data['threshold_low']  # lowest value
         self.data['actual_threshold_high'] = self.data['threshold_high']  # highest value
+        # data type change:
+        self.data['random_level'] = float(self.data['random_level'])
+        self.data['max_iter_num'] = float(self.data['max_iter_num'])
+
         # update list: which part will be update?
         if 'update_name' in self.data.keys():
             update_list = []
-            if self.data['update_name'] != None:
+            if self.data['update_name'] is not None:
                 index = (self.upper_data['environment'].split(',')).index(self.data['update_name'])
                 print('index is {}'.format(index))
                 for part in ['a', 'c', 't']:
