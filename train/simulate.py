@@ -129,7 +129,9 @@ def performance_filter(results, myconfig, myenv, mycontainer, mypolicy):
 
     for num, result in enumerate(results):
         average_performance = evaluate_start(myconfig, myenv, mycontainer, mypolicy, result['start_pos'])
-        print('the {}\'s evaluation is {}'.format(num, average_performance))
+        print('the {}\'s evaluation {}|upper_th: {}|lower_th: {}|max_iter: {}'.
+              format(num, average_performance, myconfig['actual_threshold_high'], myconfig['actual_threshold_low'],
+                     myconfig['max_iter_num']))
         if (average_performance <= threshold_high) and (average_performance >= threshold_low):
             filtered_starts.append(result['start_pos'])
         if average_performance >= threshold_low:
@@ -144,6 +146,9 @@ def performance_filter(results, myconfig, myenv, mycontainer, mypolicy):
             print('all passed, counter+1, counter is {}'.format(myconfig['counter']))
         else:
             print('all_passed, the threshold_high is {}'.format(float(myconfig['actual_threshold_high'])))
+
+    if all_zero:
+        print('all_zero! search again')
 
     myconfig['all_passed'] = all_passed
     myconfig['all_zero'] = all_zero

@@ -36,7 +36,7 @@ class PolicyConfig(configure.SubConfig):
         self.data['threshold_high'] = 0.8  # highest value
         self.data['threshold_low_high'] = 0.3  # lowest value upper bound
         self.data['threshold_high_low'] = 0.6  # highest value lower bound
-        self.data['lambda'] = 1.1
+        self.data['lambda'] = 1.2
         self.data['gamma'] = 0.9
         self.data['lam'] = 0.9
         self.data['reward_threshold'] = 0.9

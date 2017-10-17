@@ -71,7 +71,11 @@ def main():
         # watch dog start:
         if not watch_dog.check(average_performance):
             # if check false:
-            mypolicy.refresh_sigma()
+            if whole_config['random_level'] == 0.1:
+                # which means first start:
+                mypolicy.restart_part()
+            else:
+                mypolicy.refresh_sigma()
             whole_config['reset_from_pool'] = False
             print('watch dog start, thread restart')
 

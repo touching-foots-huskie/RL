@@ -69,7 +69,6 @@ class env:
                                   [-0.1, 0.1, 0.1, -0.1],
                                   [0.1, -0.1, -0.1, 0.1],
                                  ]
-  
 
         elif task_name == 'ball':
             self.state_num = 2  # state_num is the number of state dimension of itself.

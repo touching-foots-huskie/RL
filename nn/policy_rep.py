@@ -185,8 +185,19 @@ class PolicyRep(object):
                 self.saver_dict[name].restore(self.sess,
                                               self.save_path_dict['{}_{}'.format(self.base_name, name)])
 
-    def restart_part(self, name):
-        self.sess.run(self.init_dicts[name])         
+    def restart_part(self):
+        # name is action/value/activation
+        # all of the base part should be update_name
+        if self.policy_config['a_trainable']:
+            self.sess.run(self.init_dicts['{}_{}'.format(self.policy_config['update_name'], 'action')])
+            print('{}_{} restart'.format(self.policy_config['update_name'], 'action'))
+        if self.policy_config['c_trainable']:
+            self.sess.run(self.init_dicts['{}_{}'.format(self.policy_config['update_name'], 'value')])
+            print('{}_{} restart'.format(self.policy_config['update_name'], 'action'))
+        if self.policy_config['t_activate']:
+            if self.policy_config['t_trainable']:
+                self.sess.run(self.init_dicts['{}_{}'.format(self.policy_config['update_name'], 'activation')])
+                print('{}_{} restart'.format(self.policy_config['update_name'], 'action'))
 
     def refresh_sigma(self):
         # we refresh update_name
