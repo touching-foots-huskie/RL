@@ -80,10 +80,12 @@ class PolicyRep(pr.PolicyRep):
                     zip(self.a_grads, self.param_dict['{}_action'.format(self.update_name)]))
                 tf.summary.scalar('a_loss', self.a_loss)
         
+        # summary all of the data:
+
         # summary structure
         self.summary_op = tf.summary.merge_all()
         self.log_dir = self.policy_config.data['log_dir'] 
-        self.summary_writter = tf.summary.FileWriter(self.log_dir, self.sess.graph)  
+        self.summary_writer = tf.summary.FileWriter(self.log_dir, self.sess.graph)
 
     def update(self, data):
         # general update function
@@ -109,4 +111,4 @@ class PolicyRep(pr.PolicyRep):
     def log(self, data):
         feed_dict = self.get_feed_dict(data)
         summary_str = self.sess.run(self.summary_op, feed_dict)
-        self.summary_writter.add_summary(summary_str)
+        self.summary_writer.add_summary(summary_str)

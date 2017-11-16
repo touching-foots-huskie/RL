@@ -2,6 +2,7 @@
 # Email: chnme40cs@gmail.com
 # shuffle train is used to store the decorator for shuffle train:
 # $File basic_train.py
+import tqdm
 from sklearn.utils import shuffle
 
 
@@ -33,7 +34,7 @@ def train(shuffle_bool):
                             update_data[name] = data[start:end, :]
                         update_func(update_data)
             else:
-                for i in range(epochs):
+                for i in tqdm.tqdm(range(epochs)):
                     update_func(update_data)
 
         return wrapper

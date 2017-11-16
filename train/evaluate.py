@@ -8,6 +8,8 @@ def eval_wrapper(config):
     eval_string = config['eval_string']
     if (eval_string == 'sum') or (eval_string == 'dis_sum'):
         return sum_eval
+    elif eval_string == 'dense':
+        return den_eval
     else:
         print('No such eval_string!')
         raise KeyError
@@ -23,3 +25,13 @@ def sum_eval(results, config, long_term_performance):
     print('episode: {}| eval_value: {}| random_level: {}'.format(config['global_step'], average_performance,
                                                                  config['random_level']))
     return sum_flag, average_performance
+
+
+def den_eval(results, config, long_term_performance):
+    performance = np.mean(results['eval_value'])
+    long_term_performance.append(performance)
+    average_performance = np.mean(long_term_performance)
+    # delete the unused data
+    del results['eval_value']
+    print('episode: {}| eval_value: {}'.format(config['global_step'], average_performance))
+    return average_performance

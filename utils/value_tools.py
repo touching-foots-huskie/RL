@@ -31,3 +31,31 @@ def add_gae(result, gamma, lam):
         print(e)
     advantages = discount(tds, gamma * lam)
     result['advantages'] = advantages.reshape([-1, 1])
+
+
+def reward_compress(config, result):
+    # reward compress is using point value to get advantage:
+    total_len = config['total_len']*config['episode_num']
+    section_len = config['section_len']  # length per section
+    section_num = result['rewards'].shape[0]
+    advantage = np.zeros([total_len, 1])
+
+    for i in range(section_num):
+        section_advantage = result['rewards'][i] - result['values'][i]
+        # average advantage
+        low_bound = int(i * section_len)
+        high_bound = int((i + 1) * section_len)
+        advantage[low_bound:high_bound] = section_advantage/section_len
+    # save it in the results:
+    result['advantages'] = advantage
+
+
+def square_error(config, env_error):
+    square_errors = np.zeros(config['section_num'])
+    section_len = config['section_len']  # length per section
+    for i in range(config['section_num']):
+        # - is for bigger better:
+        low_bound = int(i*section_len)
+        high_bound = int((i+1)*section_len)
+        square_errors[i] = -np.sum(np.square(env_error[low_bound:high_bound]))
+    return square_errors
