@@ -3,3 +3,6 @@
 *.pyc
 *.index
 *.meta
+build/*
+dist/*
+.idea/*
