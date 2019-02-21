@@ -1,8 +1,6 @@
 # Author: Harvey Chang
 # Email: chnme40cs@gmail.com
 # policy configures
-import sys
-sys.path.append('/mnt/storage/codes/Harvey')
 import numpy as np
 from RL.configure import configure
 
@@ -23,6 +21,7 @@ class PolicyConfig(configure.SubConfig):
         self.data['epoch_per_level'] = 10
         self.data['save_dir'] = 'train_log/model/'
         self.data['log_dir'] = 'train_log/log/'
+        self.data['perf_dir'] = 'train_log/performance'
         self.data['training_mark'] = ''
         self.data['epsilon'] = 0.1
         self.data['epochs'] = 20
@@ -30,7 +29,7 @@ class PolicyConfig(configure.SubConfig):
         self.data['batch_num'] = 256
         self.data['batch_epochs'] = 20  # more smooth and quick
         self.data['long_term_batch'] = 10  # 10's average more than 10 can step into another level
-        self.data['total_episodes'] = 10000
+        self.data['total_episodes'] = 10000  # 10000
         self.data['random_level'] = 0.1
         self.data['threshold_low'] = 0.1  # lowest value
         self.data['threshold_high'] = 0.8  # highest value

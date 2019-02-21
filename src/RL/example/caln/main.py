@@ -1,8 +1,5 @@
 # Author: Harvey Chang
 # Email: chnme40cs@gmail.com
-import sys
-sys.path.append('/mnt/storage/codes/Harvey')
-
 import RL as rl
 import tensorflow as tf
 from RL.example.caln.policy_config import PolicyConfig
@@ -30,6 +27,9 @@ def update_policy(results, myconfig, mypolicy):
 
 
 def main():
+    # two global value for storing.
+    GLOBAL_REWARDS = []
+    GLOBAL_RANDOM_LEVEL = []
     # get config
     watch_dog = WatchDog()
     whole_config = rl.configure.configure.Config()
@@ -62,6 +62,10 @@ def main():
         while not flag:
             results = run_policy(whole_config, myenv, mycontainer, mypolicy)
             eval_flag, average_performance = eval_func(results, whole_config, long_term_performance)
+            # log average reward and random_level:
+            GLOBAL_REWARDS.append(average_performance)
+            GLOBAL_RANDOM_LEVEL.append(whole_config['random_level'])
+
             if eval_flag or whole_config['all_passed'] or whole_config['all_zero']:
                 update_func(whole_config)
                 long_term_performance = deque([0.0] * whole_config['long_term_batch'],
@@ -89,8 +93,14 @@ def main():
             whole_config['global_step'] += 1
             flag = judge_func(whole_config)
 
-        # save:
+        # save in save mode.
         mypolicy.save()
+        # save average performance & random level.
+        GLOBAL_RANDOM_LEVEL = np.array(GLOBAL_RANDOM_LEVEL)
+        GLOBAL_REWARDS = np.array(GLOBAL_REWARDS)
+        np.save('{}/{}_reward.npy'.format(whole_config['perf_dir'], whole_config['environment']), GLOBAL_REWARDS)
+        np.save('{}/{}_random.npy'.format(whole_config['perf_dir'], whole_config['environment']), GLOBAL_RANDOM_LEVEL)
+        print('data_saved!')
     else:
         results = run_policy(whole_config, myenv, mycontainer, mypolicy)
         # make video: multi-attribute have not write.

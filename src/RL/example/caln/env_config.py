@@ -1,9 +1,6 @@
 # Author: Harvey Chang
 # Email: chnme40cs@gmail.com
 # this is the test version of config:
-# add path:
-import sys
-sys.path.append('/mnt/storage/codes/Harvey')
 from RL.configure import configure
 
 
@@ -23,11 +20,11 @@ class EnvConfig(configure.SubConfig):
         # knowledge
         # the list for base task choice
         self.knowledge['base'] = ['ball', 'arm', '3darm']
-        self.knowledge['attribute_0'] = ['safety', 'door', 'speed', 'force']
+        self.knowledge['attribute_0'] = ['safety', 'door', 'traffic', 'force']
         # dim_information
         self.knowledge['action_dims'] = {'ball': 2, 'arm':5, '3darm':5}
         self.knowledge['dim_lists'] = {'ball': '4,4', 'arm': '10,4', '3darm': '10,6', 'safety': ',4',
-                                       'door': ',2', 'speed': ',2', 'force': ',2'}
+                                       'door': ',2', 'traffic': ',2', 'force': ',2'}
 
     def refresh(self, name=None):
         # attribute:
