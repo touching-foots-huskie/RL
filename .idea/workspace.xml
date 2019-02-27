@@ -2,106 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e83852b0-f5ef-4ef3-ba3b-3bfbedc07eab" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RL/env/mujoco/frames/traffic_arm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configure/configure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configure/visual_tool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/NN_control.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/env.slx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/matlab_tool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/simulate.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/matlab/test.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/3darm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/arm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/ball_obstacle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/door_arm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/door_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/irl_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/irl_door_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/obstacle_arm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/obstacle_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/obstacle_obstacle_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/safety_traffic_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/frames/traffic_ball.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/protocol.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/mujoco/robot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/aug_irl/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/aug_irl/env_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/aug_irl/fig_show.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/aug_irl/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/aug_irl/policy_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/env_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/policy_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507991578.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507991845.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507992452.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507993065.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507994035.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507994199.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507996108.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507996202.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507996614.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507996891.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507997108.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507997890.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507998664.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507998725.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507998790.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507998914.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1507999459.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508000325.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508001875.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508002837.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508003491.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508003585.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/log/events.out.tfevents.1508003724.GTX" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/0.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/0.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/0.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/1.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/1.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/1.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/12.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.data-00000-of-00001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/13.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/caln/train_log/model/checkpoint" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/core_net.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/matlab_core_net.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/matlab_net.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/matlab_ppo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/policy_rep.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/ppo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/value_net.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nn/write_dict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/evaluate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/judge.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/optim.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/shuffle_train.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/simulate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/update.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/watch_dog.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/figure_tool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/value_tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/env/mujoco/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/env/mujoco/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/example/caln/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/example/caln/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/0.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/0.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/1.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/1.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/3.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/3.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/4.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/example/caln/train_log/model/4.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RL/nn/write_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RL/nn/write_dict.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,16 +19,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RL$main.coverage" NAME="main Coverage Results" MODIFIED="1551240833856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/RL/example/caln" />
+    <SUITE FILE_PATH="coverage/RL$env.coverage" NAME="env Coverage Results" MODIFIED="1551237931584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/RL/env/mujoco" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="RL" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/env.py">
+        <entry file="file://$PROJECT_DIR$/src/RL/example/caln/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="234" column="72" selection-start-line="234" selection-start-column="72" selection-end-line="234" selection-end-column="72" />
+            <state relative-caret-position="231">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -135,9 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>training_mark</find>
-      <find>.split(',')[self.index]</find>
-      <find>self.sigma</find>
       <find>attribute</find>
       <find>suppres</find>
       <find>run_policy</find>
@@ -165,6 +76,9 @@
       <find>save_value</find>
       <find>episode_num</find>
       <find>set_value</find>
+      <find>dir</find>
+      <find>traffic</find>
+      <find>get_state</find>
     </findStrings>
     <replaceStrings>
       <replace>ttk</replace>
@@ -190,16 +104,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/RL/example/caln/main.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/env/__init__.py" />
-        <option value="$PROJECT_DIR$/train/data_process.py" />
-        <option value="$PROJECT_DIR$/setup.py" />
-        <option value="/mnt/storage/codes/Harvey/RL/nn/write_dict.py" />
-        <option value="$PROJECT_DIR$/train/judge.py" />
-        <option value="$PROJECT_DIR$/train/filter.py" />
-        <option value="/mnt/storage/codes/Harvey/RL/train/shuffle_train.py" />
         <option value="$PROJECT_DIR$/train/__init__.py" />
         <option value="$PROJECT_DIR$/train/performance_filter.py" />
         <option value="/mnt/storage/codes/Harvey/RL/train/performance_filter.py" />
@@ -244,6 +154,13 @@
         <option value="/mnt/storage/codes/Harvey/RL/example/aug_irl/main.py" />
         <option value="/mnt/storage/codes/Harvey/RL/nn/matlab_net.py" />
         <option value="/mnt/storage/codes/Harvey/RL/utils/value_tools.py" />
+        <option value="$PROJECT_DIR$/src/RL/example/caln/env_config.py" />
+        <option value="$PROJECT_DIR$/src/RL/train/evaluate.py" />
+        <option value="$PROJECT_DIR$/src/RL/example/caln/policy_config.py" />
+        <option value="$PROJECT_DIR$/src/RL/example/caln/main.py" />
+        <option value="$PROJECT_DIR$/src/RL/nn/write_dict.py" />
+        <option value="$PROJECT_DIR$/src/RL/env/mujoco/env.py" />
+        <option value="$PROJECT_DIR$/src/RL/env/mujoco/frames/traffic_arm.xml" />
       </list>
     </option>
   </component>
@@ -261,6 +178,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,11 +204,88 @@
               <item name="RL" type="462c0819:PsiDirectoryNode" />
               <item name="env" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="mujoco" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="mujoco" type="462c0819:PsiDirectoryNode" />
+              <item name="frames" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="mujoco" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; Python 3.6 (learn) &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RL" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="mujoco" type="462c0819:PsiDirectoryNode" />
+              <item name="frames" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -300,6 +295,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/RL/env/mujoco/frames" />
       <recent name="$PROJECT_DIR$/nn" />
       <recent name="$PROJECT_DIR$/example/aug_irl" />
       <recent name="$PROJECT_DIR$/example/caln/aug_irl" />
@@ -320,8 +316,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.fig_show">
-    <configuration name="env (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="env" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -329,12 +325,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/env/matlab" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/RL/env/mujoco" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/env/matlab/env.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/RL/env/mujoco/env.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -409,7 +405,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="matlab_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -417,12 +413,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nn" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/RL/example/caln" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nn/matlab_net.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/RL/example/caln/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -432,19 +428,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.env (1)" />
-      <item itemvalue="Python.matlab_net" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.figure_tool" />
       <item itemvalue="Python.fig_show" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.env" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.env" />
         <item itemvalue="Python.fig_show" />
         <item itemvalue="Python.figure_tool" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.matlab_net" />
-        <item itemvalue="Python.env (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -458,7 +454,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1505869582293</updated>
-      <workItem from="1550349517735" duration="1067000" />
+      <workItem from="1550349517735" duration="2276000" />
+      <workItem from="1550782715754" duration="2508000" />
+      <workItem from="1551230238112" duration="4318000" />
+      <workItem from="1551234825198" duration="6098000" />
     </task>
     <task id="LOCAL-00001" summary="add environment">
       <created>1505919359663</created>
@@ -576,7 +575,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1067000" />
+    <option name="totallyTimeSpent" value="15200000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -592,52 +591,97 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" weight="0.32928804" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.29291844" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21781115" />
       <window_info id="Structure" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.38146168" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3806818" />
       <window_info anchor="bottom" id="Python Console" order="1" sideWeight="0.49387756" weight="0.36818182" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.32613635" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.25681818" />
       <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32715008" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49514562" weight="0.40819964" />
-      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49676377" weight="0.37436762" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.3318182" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49514562" weight="0.37954545" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49676377" weight="0.3909091" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.3288364" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.3284091" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50612247" side_tool="true" weight="0.09803922" />
-      <window_info anchor="right" x="0" y="0" width="430" height="796" id="Documentation" side_tool="true" weight="0.3299356" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" weight="0.3487055" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.3299356" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" x="0" y="0" width="430" height="796" id="Documentation" order="6" side_tool="true" weight="0.3299356" />
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" weight="0.32928804" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2887755" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21459228" />
       <window_info id="Structure" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.38146168" />
-      <window_info anchor="bottom" id="Python Console" order="1" sideWeight="0.49387756" visible="true" weight="0.40285206" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.32715008" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3806818" />
+      <window_info anchor="bottom" id="Python Console" order="1" sideWeight="0.49387756" weight="0.36818182" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.26818183" />
       <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32715008" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.3318182" />
       <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49514562" weight="0.40819964" />
       <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49676377" weight="0.37436762" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" weight="0.3288364" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50612247" side_tool="true" weight="0.09803922" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" weight="0.3487055" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" x="0" y="0" width="430" height="796" id="Documentation" order="5" side_tool="true" weight="0.3299356" />
+      <window_info anchor="right" id="Database" order="6" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add environment" />
@@ -662,23 +706,73 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="myenv.get_state('state')" language="Python" />
+        <watch expression="self.save_path_dict" language="Python" />
+        <watch expression="self.policy_config" language="Python" />
+        <watch expression="self.add_state_num_list" language="Python" />
+        <watch expression="self.add_state_num_list==[0]" language="Python" />
+        <watch expression="data.keys()" language="Python" />
+        <watch expression="data['addition_0']" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>data['addition_0']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data['addition_0'].shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data['addition0'].shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data['targets'].shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data['target'].shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.keys()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.add_state_num_list==[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.add_state_num_list==0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.add_state_num_list</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.policy_config.data['param_restore']</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/configure/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/example/caln/__init__.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/configure/configure.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/example/caln/policy_config.py" />
-    <entry file="file://$PROJECT_DIR$/example/caln/env_config.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/nn/ppo.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/train/simulate.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/env/mujoco/env.py" />
-    <entry file="file://$PROJECT_DIR$/env/mujoco/protocol.py" />
-    <entry file="file://$PROJECT_DIR$/configure/configure.py" />
-    <entry file="file:///mnt/storage/codes/Harvey/RL/nn/policy_rep.py" />
-    <entry file="file://$PROJECT_DIR$/train/watch_dog.py" />
-    <entry file="file://$PROJECT_DIR$/example/caln/MUJOCO_LOG.TXT" />
-    <entry file="file://$PROJECT_DIR$/env/matlab/env_motor.py" />
-    <entry file="file://$PROJECT_DIR$/env/mujoco/env.py" />
     <entry file="file://$PROJECT_DIR$/env/matlab/matlab_tool.py" />
     <entry file="file://$PROJECT_DIR$/nn/core_net.py" />
     <entry file="file://$PROJECT_DIR$/nn/write_dict.py" />
@@ -714,10 +808,121 @@
     <entry file="file://$PROJECT_DIR$/utils/__init__.py" />
     <entry file="file://$PROJECT_DIR$/utils/value_tools.py" />
     <entry file="file://$PROJECT_DIR$/utils/figure_tool.py" />
+    <entry file="file://$PROJECT_DIR$/src/RL/configure/configure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1554">
+          <caret line="75" column="21" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/frames/ball.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="60" column="27" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/train/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/configure/visual_tool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2667">
+          <caret line="131" column="46" selection-start-line="131" selection-start-column="38" selection-end-line="131" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/frames/traffic_ball.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="72" column="27" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/robot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/example/caln/policy_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+          <folding>
+            <element signature="e#72#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/example/caln/env_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="22" column="67" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/train/simulate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="54" lean-forward="true" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="234" column="72" selection-start-line="234" selection-start-column="72" selection-end-line="234" selection-end-column="72" />
+        <state relative-caret-position="113">
+          <caret line="454" column="66" lean-forward="true" selection-start-line="454" selection-start-column="66" selection-end-line="454" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/nn/policy_rep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="188" column="27" lean-forward="true" selection-start-line="188" selection-start-column="27" selection-end-line="188" selection-end-column="27" />
+          <folding>
+            <element signature="e#247#270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/nn/write_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/frames/traffic_arm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="72" column="37" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/env/mujoco/protocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/nn/ppo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RL/example/caln/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>

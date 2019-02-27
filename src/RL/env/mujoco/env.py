@@ -188,6 +188,32 @@ class env:
                                 [-0.7, -0.2, 0.0, 0.0, 0.0, 0.3, 0.0],
                                 ]
 
+            elif attribute_name == 'force':
+                # add an constant force on force structure.
+                # input a static traffic value.
+                self.attribute_list = ['force']
+                filename = '{}/frames/traffic_arm.xml'.format(path)
+                self.rp_list = [1.0, -0.3]
+                self.add_state_num_list = [1]
+                self.add_action_num_list = [1]
+                self.init_qpos =[[-0.5, -0.2, 0.0, 0.0, 0.0, 0.3, 0.0, 0.5],
+                                [-0.7, -0.2, 0.0, 0.0, 0.0, 0.3, 0.0, 0.5],
+                                ]
+
+            elif attribute_name == 'traffic':
+                self.attribute_list = ['traffic']
+                filename = '{}/frames/traffic_arm.xml'.format(path)
+                #
+                self.rp_list = [1.0, -0.1]
+                self.add_state_num_list = [1]
+                self.add_action_num_list = [1]
+                # the last one is speed limitation.
+                self.init_qpos =[[-0.5, -1.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.5],
+                                [-0.5, 1.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.5],
+                                ]
+                self.traffic_interval = 4  # step num is the time to open door decrease the time
+                self.traffic_num = 0
+
             elif attribute_name == 'safety':
                 self.attribute_list = ['safety']
                 filename = '{}/frames/obstacle_arm.xml'.format(path)
@@ -411,7 +437,7 @@ class env:
             over_speed = (robot_speed - speed_limit) if (robot_speed > speed_limit) else 0
             return self.rp_list[no + 1] * over_speed
             
-        if self.add_state_num_list != 0:
+        if self.add_state_num_list != [0]:
             start = self.state_num + self.target_num
             pos = start + self.acc_add_state_num_list[no]
             flag = (self.rb.get_qvel()[pos] != 0)
@@ -424,6 +450,9 @@ class env:
     # step: 
     def step(self, action):
         # different task share the same action
+        # Force constrain first:
+        if 'force' in self.attribute_list:
+            action += 0.1  # add constand force to each dimension.
         # time control first:
         if 'door' in self.attribute_list:
             if self.time > self.step_num:
@@ -495,13 +524,25 @@ class env:
     def get_video(self, name, state_list, target_list, add_state_list):
         # get video from an state list:
         # record state is more precise
-        fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-        video = cv2.VideoWriter('./{}.avi'.format(name), fourcc, 20, (image_size, image_size), True)
+        # fourcc = cv2.VideoWriter_fourcc(*"MJPG")
+        # video = cv2.VideoWriter('./{}.avi'.format(name), fourcc, 20, (image_size, image_size), True)
+        # new video maker:
+        # video = cv2.VideoWriter('./video.avi', -1, 1, (image_size, image_size))
+        i = 0
         for (state, target, add_state) in zip(state_list, target_list, add_state_list):
             self.inverse_set(state, target, add_state)
             picture = self.get_picture()
-            video.write(picture)
-        video.release()
+            # cv2.imshow("image", picture)
+            if not os.path.isdir("./pictures/{}".format(name)):
+                print("directory establish!")
+                os.mkdir("./pictures/{}".format(name))
+            else:
+                print("directory exists!")
+            cv2.imwrite('./pictures/{}/frame{}.png'.format(name, i), picture)
+            if i > 20:
+                break
+            else:
+                i = i+1
 
     # utils
     def merge_state(self, state_list, target_state_list, add_state_list):
@@ -528,6 +569,7 @@ class env:
 
 
 if __name__ == '__main__':
+    '''
     # task test
     myenv = env('ball')
     myenv.step([1.0, 1.0])
@@ -559,3 +601,8 @@ if __name__ == '__main__':
     myenv.step([1.0, 1.0])
     myenv.inverse_set([1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0], [])
     print(myenv.get_state('state'))
+    '''
+    import cv2
+    myenv = env('arm,traffic')
+    img = myenv.get_picture()
+    cv2.imwrite('./test.png', img)

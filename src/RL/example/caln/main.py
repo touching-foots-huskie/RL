@@ -109,7 +109,7 @@ def main():
             add_state_list = np.stack(add_state_list).transpose([1, 0, 2])
         else:
             add_state_list = []
-        myenv.get_video('test', results['states'], results['targets'], add_state_list)
+        myenv.get_video(whole_config['environment'], results['states'], results['targets'], add_state_list)
         # print performance:
         print('the performance is {}'.format(np.mean(results['eval_value'])))
     print('Process end!')

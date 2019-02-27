@@ -55,7 +55,7 @@ class PolicyConfig(configure.SubConfig):
         self.knowledge['batch_num'] = [256, 128, 64, 32]
         self.knowledge['batch_epochs'] = [40, 80, 120, 20]
         self.knowledge['long_term_batch'] = [10, 20]
-        self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000, 10]
+        self.knowledge['total_episodes'] = [1000, 2000, 5000, 10000, 30000, 10]
         self.knowledge['random_level'] = [0.1, 1.0, 10.0, 0.0]
         # learning rate:
         self.knowledge['lr_cs'] = {'ball': 1e-2/np.sqrt(np.sqrt(200)),

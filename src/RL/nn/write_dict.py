@@ -5,7 +5,7 @@ def write_dict(name='caln'):
     if name == 'caln':
         saver_dict = collections.OrderedDict()
         base_list = ['ball', 'arm']
-        addition_list = ['safety', 'door', 'speed', 'force', None]
+        addition_list = ['safety', 'door', 'traffic', 'force', None]
         part_list = ['action', 'value', 'activation']
         # combination:
         for base in base_list:
